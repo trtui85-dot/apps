@@ -119,7 +119,7 @@ function SearchBar({ onSearch, L }) {
   useEffect(() => { if (open && ref.current) ref.current.focus(); }, [open]);
   return (
     <div style={{display:"flex",justifyContent:"center",margin:"14px 14px 0"}}>
-      <div style={{width:"100%",maxWidth:500,position:relative}}>
+      <div style={{width:"100%",maxWidth:500,position:"relative"}}>
         {I.search("#9ca3af")}
         <input ref={ref} value={val} onChange={(e) => {setVal(e.target.value); onSearch(e.target.value)}} placeholder={L.search} style={{width:"100%",padding:"9px 12px 9px 34px",borderRadius:10,border:"1px solid #e5e7eb",background:"white",fontSize:".8rem",outline:"none",fontFamily:"inherit",color:"#374151"}} />
         {val && <button onClick={() => {setVal("");onSearch("")}} style={{position:"absolute",right:8,top:"50%",transform:"translateY(-50%)",background:"none",border:"none",fontSize:".75rem",color:"#9ca3af",cursor:"pointer",padding:"2px 4px"}}>X</button>}
