@@ -1,11 +1,11 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const I = {
   dashboard: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>,
   truck: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>,
-  receipt: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 2v20l2-1.5L8 22l2-1.5L12 22l2-1.5L16 22l2-1.5L20 22V2l-2 1.5L16 2l-2 1.5L12 2l-2 1.5L8 2 6 3.5 4 2z"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg>,
-  package: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>,
-  warehouse: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 8.35V20a2 2 0 01-2 2H4a2 2 0 01-2-2V8.35A2 2 0 013.26 6.5l8-3.2a2 2 0 011.48 0l8 3.2A2 2 0 0122 8.35z"/><path d="M6 18h12"/><path d="M6 14h12"/></svg>,
+  receipt: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 2v20l2-1.5L8 22l2-1.5L12 22l2-1.5L16 22l2-1.5L20 22V2l-2 1.5L16 2l-2 1.5L12 2l-2 1.5L8 2 6 3.5 4 2z"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/></svg>,
+  package: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>,
+  warehouse: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 8.35V20a2 2 0 01-2 2H4a2 2 0 01-2-2V8.35A2 2 0 013.26 6.5l8-3.2a2 2 0 011.48 0l8 3.2A2 2 0 0122 8.35z"/></svg>,
   users: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>,
   cart: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>,
   alert: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>,
@@ -16,7 +16,6 @@ const I = {
   clipboard: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>,
   userCheck: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>,
   tags: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>,
-  settings: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.6.852.997 1.51 1H21a2 2 0 010 4h-.09c-.658.003-1.25.396-1.51 1z"/></svg>,
   dollar: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>,
   phone: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>,
   briefcase: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>,
@@ -36,6 +35,8 @@ const I = {
   heart: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.42 4.58a5.4 5.4 0 00-7.65 0l-.77.78-.77-.78a5.4 5.4 0 00-7.65 7.65l.78.77L12 20.65l7.64-7.63.78-.77a5.4 5.4 0 000-7.67z"/></svg>,
   userPlus: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>,
   activity: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
+  arrowLeft: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>,
+  settings: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.6.852.997 1.51 1H21a2 2 0 010 4h-.09c-.658.003-1.25.396-1.51 1z"/></svg>,
 };
 
 const apps = [
@@ -62,11 +63,54 @@ const apps = [
   ]},
 ];
 
-const labelFr = { badge: "Plateforme integree", section: "Applications disponibles", modulesIn: "modules inclus", open: "Ouvrir", expand: "autres modules", reduce: "Reduire", footer: "Tous Sur 1 2026 - SIR.MR", stats: ["Applications", "Modules", "Disponible"] };
-const labelAr = { badge: "\u0645\u0646\u0635\u0629 \u0645\u062a\u0643\u0627\u0645\u0644\u0629", section: "\u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0627\u0644\u0645\u062a\u0627\u062d\u0629", modulesIn: "\u0648\u062d\u062f\u0627\u062a \u0645\u0634\u0645\u0648\u0644\u0647", open: "\u0641\u062a\u062d", expand: "\u0648\u062d\u062f\u0627\u062a \u0623\u062e\u0631\u0649", reduce: "\u062a\u0642\u0644\u064a\u0644", footer: "\u0643\u0644 \u0641\u064a \u0635\u0641\u062d\u0629 \u00a9 2026 - SIR.MR", stats: ["\u062a\u0637\u0628\u064a\u0642", "\u0648\u062d\u062f\u0627\u062a", "\u0645\u062a\u0648\u0641\u0631"] };
+const labelFr = { badge: "Plateforme integree", section: "Applications disponibles", open: "Ouvrir", footer: "Tous Sur 1 2026 - SIR.MR", stats: ["Applications", "Modules", "Disponible"], detail: "Vue d'ensemble", back: "Retour", launch: "Lancer l'application", modules: "modules" };
+const labelAr = { badge: "\u0645\u0646\u0635\u0629 \u0645\u062a\u0643\u0627\u0645\u0644\u0629", section: "\u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0627\u0644\u0645\u062a\u0627\u062d\u0629", open: "\u0641\u062a\u062d", footer: "\u0643\u0644 \u0641\u064a \u0635\u0641\u062d\u0629 \u00a9 2026 - SIR.MR", stats: ["\u062a\u0637\u0628\u064a\u0642", "\u0648\u062d\u062f\u0627\u062a", "\u0645\u062a\u0648\u0641\u0631"], detail: "\u0639\u0631\u0636 \u0639\u0627\u0645", back: "\u0631\u062c\u0648\u0639", launch: "\u0634\u063a\u0644 \u0627\u0644\u062a\u0637\u0628\u064a\u0642", modules: "\u0648\u062d\u062f\u0627\u062a" };
+
+function DetailView({ app, lang, L, onBack }) {
+  const isAr = lang === "ar";
+  const info = isAr ? app.ar : app.fr;
+  return (
+    <div style={{minHeight:"100vh",background:"#f5f6fa",animation:"fadeIn 0.3s ease"}}>
+      <div style={{background:app.gradient,padding:"32px 20px 48px",color:"white",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",top:-60,right:-60,width:200,height:200,borderRadius:"50%",background:"rgba(255,255,255,0.08)"}}/>
+        <div style={{position:"absolute",bottom:-40,left:-40,width:150,height:150,borderRadius:"50%",background:"rgba(255,255,255,0.05)"}}/>
+        <div style={{maxWidth:600,margin:"0 auto",position:"relative",zIndex:1}}>
+          <button onClick={onBack} style={{background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.2)",borderRadius:10,padding:"8px 16px",color:"white",fontSize:"0.8rem",fontWeight:600,cursor:"pointer",display:"inline-flex",alignItems:"center",gap:6,marginBottom:24}}>
+            {I.arrowLeft("white")} {L.back}
+          </button>
+          <div style={{display:"flex",alignItems:"center",gap:20,marginBottom:20}}>
+            <div style={{width:72,height:72,borderRadius:20,background:"rgba(255,255,255,0.2)",display:"flex",alignItems:"center",justifyContent:"center",backdropFilter:"blur(10px)",flexShrink:0}}>
+              <div style={{width:40,height:40}}>{app.icon("white")}</div>
+            </div>
+            <div>
+              <h1 style={{fontSize:"1.6rem",fontWeight:800,marginBottom:4}}>{info.name}</h1>
+              <p style={{fontSize:"0.85rem",opacity:0.8,lineHeight:1.5}}>{info.desc}</p>
+            </div>
+          </div>
+          <a href={app.url} target="_blank" rel="noopener noreferrer" style={{display:"inline-flex",alignItems:"center",gap:8,padding:"12px 28px",borderRadius:12,border:"2px solid white",background:"white",color:app.color,fontSize:"0.9rem",fontWeight:700,textDecoration:"none",transition:"all 0.2s"}}>
+            {I.external(app.color)} {L.launch}
+          </a>
+        </div>
+      </div>
+      <div style={{maxWidth:600,margin:"0 auto",padding:"24px 16px 60px"}}>
+        <div style={{fontSize:"0.7rem",fontWeight:600,textTransform:"uppercase",letterSpacing:"1px",color:"#9ca3af",marginBottom:14}}>{app.modules.length} {L.modules}</div>
+        <div style={{display:"flex",flexDirection:"column",gap:8}}>
+          {app.modules.map((mod,i) => (
+            <div key={i} style={{background:"white",borderRadius:12,padding:"14px 16px",display:"flex",alignItems:"center",gap:14,border:"1px solid #e5e7eb",transition:"all 0.15s",animationDelay:`${i*0.05}s`}}>
+              <div style={{width:40,height:40,borderRadius:10,background:app.colorLight,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+                <div style={{width:20,height:20}}>{mod.icon(app.color)}</div>
+              </div>
+              <span style={{fontSize:"0.88rem",fontWeight:600,color:"#1f2937"}}>{isAr ? mod.ar : mod.fr}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function App() {
-  const [expanded, setExpanded] = useState(null);
+  const [detail, setDetail] = useState(null);
   const [lang, setLang] = useState("fr");
   const isAr = lang === "ar";
   const L = isAr ? labelAr : labelFr;
@@ -77,12 +121,27 @@ export default function App() {
     document.body.style.fontFamily = isAr ? "'IBM Plex Sans Arabic','Inter',sans-serif" : "'Inter',-apple-system,BlinkMacSystemFont,sans-serif";
   }, [isAr]);
 
+  if (detail) {
+    return (
+      <>
+        <style>{`
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+          *{margin:0;padding:0;box-sizing:border-box}
+          body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased}
+          @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+        `}</style>
+        <DetailView app={detail} lang={lang} L={L} onBack={() => setDetail(null)} />
+      </>
+    );
+  }
+
   return (
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
         *{margin:0;padding:0;box-sizing:border-box}
         body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
         .lang-toggle{position:fixed;top:14px;z-index:100;display:flex;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:50px;overflow:hidden;backdrop-filter:blur(12px);right:14px}
         .lang-toggle button{padding:7px 16px;border:none;background:transparent;color:rgba(255,255,255,0.6);font-size:0.75rem;font-weight:600;cursor:pointer;transition:all 0.2s}
         .lang-toggle button.active{background:rgba(255,255,255,0.2);color:white;border-radius:50px}
@@ -98,10 +157,18 @@ export default function App() {
         .container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
         .section-title{font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:14px}
         .apps-list{display:flex;flex-direction:column;gap:16px}
-        .app-card{background:white;border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;transition:all 0.2s ease}
-        .app-card:hover{box-shadow:0 8px 30px -5px rgba(0,0,0,0.1)}
+        .app-card{background:white;border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;transition:all 0.2s ease;cursor:pointer;animation:fadeIn 0.4s ease forwards;opacity:0}
+        .app-card:nth-child(1){animation-delay:0.05s}
+        .app-card:nth-child(2){animation-delay:0.1s}
+        .app-card:nth-child(3){animation-delay:0.15s}
+        .app-card:nth-child(4){animation-delay:0.2s}
+        .app-card:nth-child(5){animation-delay:0.25s}
+        .app-card:nth-child(6){animation-delay:0.3s}
+        .app-card:nth-child(7){animation-delay:0.35s}
+        .app-card:hover{box-shadow:0 8px 30px -5px rgba(0,0,0,0.1);transform:translateY(-2px)}
+        .app-card:active{transform:scale(0.98)}
         .app-header{padding:20px 20px 0;display:flex;align-items:flex-start;gap:14px}
-        .app-icon-box{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .app-icon-box{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px -2px rgba(0,0,0,0.2)}
         .app-icon-box svg{width:26px;height:26px}
         .app-name{font-size:1.05rem;font-weight:700;color:#111827}
         .app-desc{font-size:0.78rem;color:#6b7280;line-height:1.5;margin-top:3px}
@@ -114,10 +181,9 @@ export default function App() {
         .btn-open{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:10px;border:none;font-size:0.82rem;font-weight:600;cursor:pointer;text-decoration:none;color:white;transition:all 0.2s ease}
         .btn-open:active{transform:scale(0.97)}
         .btn-open svg{width:15px;height:15px}
-        .expand-btn{background:none;border:none;cursor:pointer;font-size:0.72rem;font-weight:600;padding:4px 0}
         .footer{text-align:center;padding:24px 16px;color:#b0b8c4;font-size:0.72rem;border-top:1px solid #f0f1f5}
         @media(min-width:640px){.hero{padding:60px 24px 44px}.hero h1{font-size:2.6rem}.hero p{font-size:1rem}.hero-stats{gap:48px}.hero-stat-num{font-size:1.8rem}.container{padding:32px 24px 80px}.app-header{padding:24px 24px 0}.app-body{padding:20px 24px}.app-footer{padding:0 24px 24px}.modules-grid{grid-template-columns:repeat(auto-fill,minmax(145px,1fr))}}
-        @media(min-width:900px){.apps-list{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.app-card{display:flex;flex-direction:column}}
+        @media(min-width:900px){.apps-list{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}}
       `}</style>
 
       <div className="lang-toggle">
@@ -128,7 +194,7 @@ export default function App() {
       <header className="hero">
         <div className="hero-badge">{I.zap("#facc15")} {L.badge}</div>
         <h1>{isAr ? "\u0643\u0644 \u0641\u064a \u0635\u0641\u062d\u0629" : "Tous Sur 1"}</h1>
-        <p>{isAr ? "\u062c\u0645\u064a\u0639 \u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0627\u0644\u062a\u0623\u0633\u064a\u0633 \u0641\u064a \u0645\u0643\u0627\u0646 \u0648\u0627\u062d\u062f. \u0627\u062e\u062a\u0631 \u0648\u0623\u062f\u0631 \u0639\u0645\u0644\u0643." : "Toutes vos applications de gestion en un seul endroit. Choisissez et gerez votre business."}</p>
+        <p>{isAr ? "\u062c\u0645\u064a\u0639 \u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0627\u0644\u062a\u0623\u0633\u064a\u0633 \u0641\u064a \u0645\u0643\u0627\u0646 \u0648\u0627\u062d\u062f. \u0627\u062e\u062a\u0631 \u0648\u0627\u0636\u063a\u0637." : "Toutes vos applications de gestion en un seul endroit. Choisissez et cliquez."}</p>
         <div className="hero-stats">
           <div><div className="hero-stat-num">7</div><div className="hero-stat-label">{L.stats[0]}</div></div>
           <div><div className="hero-stat-num">50+</div><div className="hero-stat-label">{L.stats[1]}</div></div>
@@ -140,10 +206,9 @@ export default function App() {
         <div className="section-title">{L.section}</div>
         <div className="apps-list">
           {apps.map((app) => {
-            const isOpen = expanded === app.id;
             const info = isAr ? app.ar : app.fr;
             return (
-              <div key={app.id} className="app-card">
+              <div key={app.id} className="app-card" onClick={() => setDetail(app)}>
                 <div className="app-header">
                   <div className="app-icon-box" style={{background:app.gradient}}>
                     <span style={{color:"white"}}>{app.icon("white")}</span>
@@ -154,30 +219,20 @@ export default function App() {
                   </div>
                 </div>
                 <div className="app-body">
-                  <div className="modules-label">{app.modules.length} {L.modulesIn}</div>
+                  <div className="modules-label">{app.modules.length} {isAr ? "\u0648\u062d\u062f\u0627\u062a \u0645\u0634\u0645\u0648\u0644\u0629" : "modules inclus"}</div>
                   <div className="modules-grid">
-                    {(isOpen ? app.modules : app.modules.slice(0,6)).map((mod,i) => (
+                    {app.modules.slice(0,6).map((mod,i) => (
                       <div key={i} className="mod-tag" style={{background:app.colorLight,color:"#374151",borderColor:app.color+"12"}}>
                         {mod.icon(app.color)}
                         {isAr ? mod.ar : mod.fr}
                       </div>
                     ))}
                   </div>
-                  {!isOpen && app.modules.length > 6 && (
-                    <button className="expand-btn" style={{color:app.color}} onClick={() => setExpanded(app.id)}>
-                      + {app.modules.length - 6} {L.expand}
-                    </button>
-                  )}
-                  {isOpen && app.modules.length > 6 && (
-                    <button className="expand-btn" style={{color:app.color}} onClick={() => setExpanded(null)}>
-                      {L.reduce}
-                    </button>
-                  )}
                 </div>
                 <div className="app-footer">
-                  <a href={app.url} target="_blank" rel="noopener noreferrer" className="btn-open" style={{background:app.color}}>
+                  <span className="btn-open" style={{background:app.color}} onClick={(e) => {e.stopPropagation();window.open(app.url,"_blank")}}>
                     {I.external("white")} {L.open}
-                  </a>
+                  </span>
                 </div>
               </div>
             );
