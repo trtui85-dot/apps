@@ -38,7 +38,6 @@ const I = {
   arrowLeft: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>,
   settings: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.6.852.997 1.51 1H21a2 2 0 010 4h-.09c-.658.003-1.25.396-1.51 1z"/></svg>,
   search: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>,
-  pin: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>,
 };
 
 const apps = [
@@ -65,11 +64,10 @@ const apps = [
   ]},
 ];
 
-const labelFr = { badge: "Plateforme integree", section: "Applications disponibles", open: "Ouvrir", footer: "SIR APPS 2026", stats: ["Applications", "Modules", "Disponible"], back: "Retour", launch: "Lancer l'application", modules: "modules", search: "Rechercher...", contact: "Contacter l'equipe", all: "Toutes les apps" };
-const labelAr = { badge: "\u0645\u0646\u0635\u0629 \u0645\u062a\u0643\u0627\u0645\u0644\u0629", section: "\u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0627\u0644\u0645\u062a\u0627\u062d\u0629", open: "\u0641\u062a\u062d", footer: "\u0633\u064a\u0631 \u0622\u0628\u0633 2026", stats: ["\u062a\u0637\u0628\u064a\u0642", "\u0648\u062d\u062f\u0627\u062a", "\u0645\u062a\u0648\u0641\u0631"], back: "\u0631\u062c\u0648\u0639", launch: "\u0634\u063a\u0644 \u0627\u0644\u062a\u0637\u0628\u064a\u0642", modules: "\u0648\u062d\u062f\u0627\u062a", search: "\u0628\u062d\u062b...", contact: "\u062a\u0648\u0627\u0635\u0644 \u0645\u0639 \u0627\u0644\u0641\u0631\u064a\u0642", all: "\u062c\u0645\u064a\u0639 \u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a" };
+const labelFr = { badge: "Plateforme integree", section: "Applications disponibles", open: "Ouvrir", footer: "SIR APPS 2026", stats: ["Applications", "Modules", "Disponible"], back: "Retour", launch: "Lancer l'application", modules: "modules", search: "Rechercher...", all: "Toutes les apps" };
+const labelAr = { badge: "\u0645\u0646\u0635\u0629 \u0645\u062a\u0643\u0627\u0645\u0644\u0629", section: "\u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0627\u0644\u0645\u062a\u0627\u062d\u0629", open: "\u0641\u062a\u062d", footer: "\u0633\u064a\u0631 \u0622\u0628\u0633 2026", stats: ["\u062a\u0637\u0628\u064a\u0642", "\u0648\u062d\u062f\u0627\u062a", "\u0645\u062a\u0648\u0641\u0631"], back: "\u0631\u062c\u0648\u0639", launch: "\u0634\u063a\u0644 \u0627\u0644\u062a\u0637\u0628\u064a\u0642", modules: "\u0648\u062d\u062f\u0627\u062a", search: "\u0628\u062d\u062b...", all: "\u062c\u0645\u064a\u0639 \u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a" };
 
 const WA = "https://wa.me/22236445523";
-const WA_SVG = <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>;
 
 function DetailView({ app, lang, L, onBack }) {
   const isAr = lang === "ar";
@@ -118,43 +116,26 @@ function SearchBar({ onSearch, L }) {
   const [open, setOpen] = useState(false);
   const [val, setVal] = useState("");
   const ref = useRef(null);
-
-  useEffect(() => {
-    if (open && ref.current) ref.current.focus();
-  }, [open]);
-
+  useEffect(() => { if (open && ref.current) ref.current.focus(); }, [open]);
   return (
-    <div style={{position:"relative",display:"flex",justifyContent:"center",margin:"16px 16px 0"}}>
-      {!open ? (
-        <button onClick={() => setOpen(true)} style={{width:"100%",maxWidth:500,padding:"11px 16px",borderRadius:12,border:"1px solid #e5e7eb",background:"white",display:"flex",alignItems:"center",gap:10,cursor:"pointer",fontSize:".82rem",color:"#9ca3af",textAlign:"left",boxShadow:"0 2px 8px rgba(0,0,0,0.04)"}}>
-          {I.search("#9ca3af")} {L.search}
-        </button>
-      ) : (
-        <div style={{width:"100%",maxWidth:500,position:"relative",animation:"expandIn .3s ease"}}>
-          <div style={{position:"absolute",left:14,top:"50%",transform:"translateY(-50%)"}}>{I.search("#6b7280")}</div>
-          <input ref={ref} value={val} onChange={(e) => {setVal(e.target.value); onSearch(e.target.value)}} onBlur={() => {if (!val) setOpen(false)}} style={{width:"100%",padding:"12px 42px 12px 40px",borderRadius:12,border:"2px solid #6366f1",background:"white",fontSize:".85rem",outline:"none",boxShadow:"0 4px 20px rgba(99,102,241,0.15)",fontFamily:"inherit"}} />
-          <button onClick={() => {setVal("");onSearch("");setOpen(false)}} style={{position:"absolute",right:10,top:"50%",transform:"translateY(-50%)",background:"#f3f4f6",border:"none",borderRadius:8,padding:"5px 10px",fontSize:".7rem",fontWeight:600,color:"#6b7280",cursor:"pointer"}}>X</button>
-        </div>
-      )}
+    <div style={{display:"flex",justifyContent:"center",margin:"14px 14px 0"}}>
+      <div style={{width:"100%",maxWidth:500,position:relative}}>
+        {I.search("#9ca3af")}
+        <input ref={ref} value={val} onChange={(e) => {setVal(e.target.value); onSearch(e.target.value)}} placeholder={L.search} style={{width:"100%",padding:"9px 12px 9px 34px",borderRadius:10,border:"1px solid #e5e7eb",background:"white",fontSize:".8rem",outline:"none",fontFamily:"inherit",color:"#374151"}} />
+        {val && <button onClick={() => {setVal("");onSearch("")}} style={{position:"absolute",right:8,top:"50%",transform:"translateY(-50%)",background:"none",border:"none",fontSize:".75rem",color:"#9ca3af",cursor:"pointer",padding:"2px 4px"}}>X</button>}
+      </div>
     </div>
   );
 }
 
-function WhatsAppButton({ L, showAnim }) {
+function WhatsAppButton({ showAnim }) {
   return (
-      <a href={WA} target="_blank" rel="noopener noreferrer" className={`wa-btn ${showAnim ? "wa-anim" : ""}`} style={{position:"fixed",bottom:"env(safe-area-inset-bottom, 20px)",right:20,zIndex:200,width:56,height:56,borderRadius:"50%",background:"#25D366",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 4px 20px rgba(37,211,102,0.4)",textDecoration:"none",transition:"transform .2s"}}>
-      {WA_SVG}
+    <a href={WA} target="_blank" rel="noopener noreferrer" className={showAnim ? "wa-anim" : ""} style={{position:"fixed",bottom:20,right:16,zIndex:200,width:48,height:48,borderRadius:"50%",background:"#25D366",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 3px 14px rgba(37,211,102,0.35)",textDecoration:"none"}}>
+      <svg viewBox="0 0 24 24" fill="white" width="22" height="22"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
   );
 }
 
-function PinnedBar({ L }) {
-  return (
-    <a href={WA} target="_blank" rel="noopener noreferrer" style={{position:"fixed",bottom:0,left:0,right:0,zIndex:199,background:"linear-gradient(135deg,#075e54,#128c7e)",color:"white",display:"flex",alignItems:"center",justifyContent:"center",gap:10,padding:"10px 16px",textDecoration:"none",fontSize:".78rem",fontWeight:600}}>
-      {I.pin("white")} {L.contact} - +22236445523
-    </a>
-  );
-}
 
 export default function App() {
   const [detail, setDetail] = useState(null);
@@ -233,8 +214,7 @@ export default function App() {
         </div>
       </main>
 
-      <PinnedBar L={L} />
-      <WhatsAppButton L={L} showAnim={showWA} />
+      <WhatsAppButton showAnim={showWA} />
 
       <footer className="footer" style={{paddingBottom:60}}>{L.footer}</footer>
     </>
@@ -246,9 +226,8 @@ const CSS = `
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transition:font-family .2s}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-@keyframes expandIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
 @keyframes waBounce{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 15px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 12px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 .wa-anim{animation:waBounce 1s ease 3,waPulse 1.5s ease 3}
 .lang-toggle{position:fixed;top:12px;z-index:100;display:flex;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:50px;overflow:hidden;backdrop-filter:blur(12px);right:12px}
 .lang-toggle button{padding:6px 14px;border:none;background:transparent;color:rgba(255,255,255,0.6);font-size:.72rem;font-weight:600;cursor:pointer;transition:all .2s}
