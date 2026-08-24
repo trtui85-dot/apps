@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const I = {
   dashboard: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>,
@@ -37,6 +37,8 @@ const I = {
   activity: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
   arrowLeft: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>,
   settings: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.6.852.997 1.51 1H21a2 2 0 010 4h-.09c-.658.003-1.25.396-1.51 1z"/></svg>,
+  search: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>,
+  pin: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>,
 };
 
 const apps = [
@@ -63,44 +65,47 @@ const apps = [
   ]},
 ];
 
-const labelFr = { badge: "Plateforme integree", section: "Applications disponibles", open: "Ouvrir", footer: "Tous Sur 1 2026 - SIR.MR", stats: ["Applications", "Modules", "Disponible"], detail: "Vue d'ensemble", back: "Retour", launch: "Lancer l'application", modules: "modules" };
-const labelAr = { badge: "\u0645\u0646\u0635\u0629 \u0645\u062a\u0643\u0627\u0645\u0644\u0629", section: "\u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0627\u0644\u0645\u062a\u0627\u062d\u0629", open: "\u0641\u062a\u062d", footer: "\u0643\u0644 \u0641\u064a \u0635\u0641\u062d\u0629 \u00a9 2026 - SIR.MR", stats: ["\u062a\u0637\u0628\u064a\u0642", "\u0648\u062d\u062f\u0627\u062a", "\u0645\u062a\u0648\u0641\u0631"], detail: "\u0639\u0631\u0636 \u0639\u0627\u0645", back: "\u0631\u062c\u0648\u0639", launch: "\u0634\u063a\u0644 \u0627\u0644\u062a\u0637\u0628\u064a\u0642", modules: "\u0648\u062d\u062f\u0627\u062a" };
+const labelFr = { badge: "Plateforme integree", section: "Applications disponibles", open: "Ouvrir", footer: "SIR APPS 2026", stats: ["Applications", "Modules", "Disponible"], back: "Retour", launch: "Lancer l'application", modules: "modules", search: "Rechercher...", contact: "Contacter l'equipe", all: "Toutes les apps" };
+const labelAr = { badge: "\u0645\u0646\u0635\u0629 \u0645\u062a\u0643\u0627\u0645\u0644\u0629", section: "\u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0627\u0644\u0645\u062a\u0627\u062d\u0629", open: "\u0641\u062a\u062d", footer: "\u0633\u064a\u0631 \u0622\u0628\u0633 2026", stats: ["\u062a\u0637\u0628\u064a\u0642", "\u0648\u062d\u062f\u0627\u062a", "\u0645\u062a\u0648\u0641\u0631"], back: "\u0631\u062c\u0648\u0639", launch: "\u0634\u063a\u0644 \u0627\u0644\u062a\u0637\u0628\u064a\u0642", modules: "\u0648\u062d\u062f\u0627\u062a", search: "\u0628\u062d\u062b...", contact: "\u062a\u0648\u0627\u0635\u0644 \u0645\u0639 \u0627\u0644\u0641\u0631\u064a\u0642", all: "\u062c\u0645\u064a\u0639 \u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a" };
+
+const WA = "https://wa.me/22236445523";
+const WA_SVG = <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>;
 
 function DetailView({ app, lang, L, onBack }) {
   const isAr = lang === "ar";
   const info = isAr ? app.ar : app.fr;
   return (
-    <div style={{minHeight:"100vh",background:"#f5f6fa",animation:"fadeIn 0.3s ease"}}>
-      <div style={{background:app.gradient,padding:"32px 20px 48px",color:"white",position:"relative",overflow:"hidden"}}>
+    <div style={{minHeight:"100vh",background:"#f5f6fa",animation:"fadeIn .3s ease"}}>
+      <div style={{background:app.gradient,padding:"28px 16px 40px",color:"white",position:"relative",overflow:"hidden"}}>
         <div style={{position:"absolute",top:-60,right:-60,width:200,height:200,borderRadius:"50%",background:"rgba(255,255,255,0.08)"}}/>
         <div style={{position:"absolute",bottom:-40,left:-40,width:150,height:150,borderRadius:"50%",background:"rgba(255,255,255,0.05)"}}/>
         <div style={{maxWidth:600,margin:"0 auto",position:"relative",zIndex:1}}>
-          <button onClick={onBack} style={{background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.2)",borderRadius:10,padding:"8px 16px",color:"white",fontSize:"0.8rem",fontWeight:600,cursor:"pointer",display:"inline-flex",alignItems:"center",gap:6,marginBottom:24}}>
+          <button onClick={onBack} style={{background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.2)",borderRadius:10,padding:"7px 14px",color:"white",fontSize:".78rem",fontWeight:600,cursor:"pointer",display:"inline-flex",alignItems:"center",gap:6,marginBottom:20}}>
             {I.arrowLeft("white")} {L.back}
           </button>
-          <div style={{display:"flex",alignItems:"center",gap:20,marginBottom:20}}>
-            <div style={{width:72,height:72,borderRadius:20,background:"rgba(255,255,255,0.2)",display:"flex",alignItems:"center",justifyContent:"center",backdropFilter:"blur(10px)",flexShrink:0}}>
-              <div style={{width:40,height:40}}>{app.icon("white")}</div>
+          <div style={{display:"flex",alignItems:"center",gap:16,marginBottom:16}}>
+            <div style={{width:64,height:64,borderRadius:18,background:"rgba(255,255,255,0.2)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+              <div style={{width:34,height:34}}>{app.icon("white")}</div>
             </div>
             <div>
-              <h1 style={{fontSize:"1.6rem",fontWeight:800,marginBottom:4}}>{info.name}</h1>
-              <p style={{fontSize:"0.85rem",opacity:0.8,lineHeight:1.5}}>{info.desc}</p>
+              <h1 style={{fontSize:"1.4rem",fontWeight:800,marginBottom:4}}>{info.name}</h1>
+              <p style={{fontSize:".82rem",opacity:.8,lineHeight:1.5}}>{info.desc}</p>
             </div>
           </div>
-          <a href={app.url} target="_blank" rel="noopener noreferrer" style={{display:"inline-flex",alignItems:"center",gap:8,padding:"12px 28px",borderRadius:12,border:"2px solid white",background:"white",color:app.color,fontSize:"0.9rem",fontWeight:700,textDecoration:"none",transition:"all 0.2s"}}>
+          <a href={app.url} target="_blank" rel="noopener noreferrer" style={{display:"inline-flex",alignItems:"center",gap:8,padding:"10px 24px",borderRadius:11,border:"2px solid white",background:"white",color:app.color,fontSize:".85rem",fontWeight:700,textDecoration:"none"}}>
             {I.external(app.color)} {L.launch}
           </a>
         </div>
       </div>
-      <div style={{maxWidth:600,margin:"0 auto",padding:"24px 16px 60px"}}>
-        <div style={{fontSize:"0.7rem",fontWeight:600,textTransform:"uppercase",letterSpacing:"1px",color:"#9ca3af",marginBottom:14}}>{app.modules.length} {L.modules}</div>
-        <div style={{display:"flex",flexDirection:"column",gap:8}}>
+      <div style={{maxWidth:600,margin:"0 auto",padding:"20px 16px 80px"}}>
+        <div style={{fontSize:".68rem",fontWeight:600,textTransform:"uppercase",letterSpacing:1,color:"#9ca3af",marginBottom:12}}>{app.modules.length} {L.modules}</div>
+        <div style={{display:"flex",flexDirection:"column",gap:7}}>
           {app.modules.map((mod,i) => (
-            <div key={i} style={{background:"white",borderRadius:12,padding:"14px 16px",display:"flex",alignItems:"center",gap:14,border:"1px solid #e5e7eb",transition:"all 0.15s",animationDelay:`${i*0.05}s`}}>
-              <div style={{width:40,height:40,borderRadius:10,background:app.colorLight,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
-                <div style={{width:20,height:20}}>{mod.icon(app.color)}</div>
+            <div key={i} style={{background:"white",borderRadius:11,padding:"12px 14px",display:"flex",alignItems:"center",gap:12,border:"1px solid #e5e7eb",animation:`fadeIn .3s ease ${i*0.04}s both`}}>
+              <div style={{width:36,height:36,borderRadius:9,background:app.colorLight,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+                <div style={{width:18,height:18}}>{mod.icon(app.color)}</div>
               </div>
-              <span style={{fontSize:"0.88rem",fontWeight:600,color:"#1f2937"}}>{isAr ? mod.ar : mod.fr}</span>
+              <span style={{fontSize:".82rem",fontWeight:600,color:"#1f2937"}}>{isAr ? mod.ar : mod.fr}</span>
             </div>
           ))}
         </div>
@@ -109,9 +114,53 @@ function DetailView({ app, lang, L, onBack }) {
   );
 }
 
+function SearchBar({ onSearch, L }) {
+  const [open, setOpen] = useState(false);
+  const [val, setVal] = useState("");
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (open && ref.current) ref.current.focus();
+  }, [open]);
+
+  return (
+    <div style={{position:"relative",display:"flex",justifyContent:"center",margin:"16px 16px 0"}}>
+      {!open ? (
+        <button onClick={() => setOpen(true)} style={{width:"100%",maxWidth:500,padding:"11px 16px",borderRadius:12,border:"1px solid #e5e7eb",background:"white",display:"flex",alignItems:"center",gap:10,cursor:"pointer",fontSize:".82rem",color:"#9ca3af",textAlign:"left",boxShadow:"0 2px 8px rgba(0,0,0,0.04)"}}>
+          {I.search("#9ca3af")} {L.search}
+        </button>
+      ) : (
+        <div style={{width:"100%",maxWidth:500,position:"relative",animation:"expandIn .3s ease"}}>
+          <div style={{position:"absolute",left:14,top:"50%",transform:"translateY(-50%)"}}>{I.search("#6b7280")}</div>
+          <input ref={ref} value={val} onChange={(e) => {setVal(e.target.value); onSearch(e.target.value)}} onBlur={() => {if (!val) setOpen(false)}} style={{width:"100%",padding:"12px 42px 12px 40px",borderRadius:12,border:"2px solid #6366f1",background:"white",fontSize:".85rem",outline:"none",boxShadow:"0 4px 20px rgba(99,102,241,0.15)",fontFamily:"inherit"}} />
+          <button onClick={() => {setVal("");onSearch("");setOpen(false)}} style={{position:"absolute",right:10,top:"50%",transform:"translateY(-50%)",background:"#f3f4f6",border:"none",borderRadius:8,padding:"5px 10px",fontSize:".7rem",fontWeight:600,color:"#6b7280",cursor:"pointer"}}>X</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function WhatsAppButton({ L, showAnim }) {
+  return (
+      <a href={WA} target="_blank" rel="noopener noreferrer" className={`wa-btn ${showAnim ? "wa-anim" : ""}`} style={{position:"fixed",bottom:"env(safe-area-inset-bottom, 20px)",right:20,zIndex:200,width:56,height:56,borderRadius:"50%",background:"#25D366",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 4px 20px rgba(37,211,102,0.4)",textDecoration:"none",transition:"transform .2s"}}>
+      {WA_SVG}
+    </a>
+  );
+}
+
+function PinnedBar({ L }) {
+  return (
+    <a href={WA} target="_blank" rel="noopener noreferrer" style={{position:"fixed",bottom:0,left:0,right:0,zIndex:199,background:"linear-gradient(135deg,#075e54,#128c7e)",color:"white",display:"flex",alignItems:"center",justifyContent:"center",gap:10,padding:"10px 16px",textDecoration:"none",fontSize:".78rem",fontWeight:600}}>
+      {I.pin("white")} {L.contact} - +22236445523
+    </a>
+  );
+}
+
 export default function App() {
   const [detail, setDetail] = useState(null);
   const [lang, setLang] = useState("fr");
+  const [filter, setFilter] = useState("");
+  const [showWA, setShowWA] = useState(false);
   const isAr = lang === "ar";
   const L = isAr ? labelAr : labelFr;
 
@@ -119,17 +168,25 @@ export default function App() {
     document.documentElement.dir = isAr ? "rtl" : "ltr";
     document.documentElement.lang = isAr ? "ar" : "fr";
     document.body.style.fontFamily = isAr ? "'IBM Plex Sans Arabic',sans-serif" : "'Comfortaa',sans-serif";
+    const seen = sessionStorage.getItem("sirapps_wa");
+    if (!seen) {
+      setShowWA(true);
+      sessionStorage.setItem("sirapps_wa", "1");
+    }
   }, [isAr]);
+
+  const filtered = apps.filter(a => {
+    if (!filter) return true;
+    const q = filter.toLowerCase();
+    const nfr = a.fr.name.toLowerCase();
+    const nar = a.ar.name.toLowerCase();
+    return nfr.includes(q) || nar.includes(q);
+  });
 
   if (detail) {
     return (
       <>
-        <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased}
-        @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-        `}</style>
+        <style>{CSS}</style>
         <DetailView app={detail} lang={lang} L={L} onBack={() => setDetail(null)} />
       </>
     );
@@ -137,54 +194,7 @@ export default function App() {
 
   return (
     <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased}
-        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-        .lang-toggle{position:fixed;top:14px;z-index:100;display:flex;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:50px;overflow:hidden;backdrop-filter:blur(12px);right:14px}
-        .lang-toggle button{padding:7px 16px;border:none;background:transparent;color:rgba(255,255,255,0.6);font-size:0.75rem;font-weight:600;cursor:pointer;transition:all 0.2s}
-        .lang-toggle button.active{background:rgba(255,255,255,0.2);color:white;border-radius:50px}
-        .hero{text-align:center;padding:52px 16px 36px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);color:white;position:relative;overflow:hidden}
-        .hero::before{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(99,102,241,0.15) 0%,transparent 70%);border-radius:50%}
-        .hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:250px;height:250px;background:radial-gradient(circle,rgba(236,72,153,0.1) 0%,transparent 70%);border-radius:50%}
-        .hero-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:50px;font-size:0.72rem;font-weight:500;margin-bottom:16px;backdrop-filter:blur(10px);position:relative;z-index:1}
-        .hero h1{font-size:1.6rem;font-weight:800;margin-bottom:10px;letter-spacing:-0.03em;position:relative;z-index:1}
-        .hero p{font-size:0.88rem;opacity:0.7;max-width:440px;margin:0 auto;line-height:1.6;position:relative;z-index:1}
-        .hero-stats{display:flex;justify-content:center;gap:32px;margin-top:28px;position:relative;z-index:1}
-        .hero-stat-num{font-size:1.5rem;font-weight:700}
-        .hero-stat-label{font-size:0.65rem;opacity:0.5;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px}
-        .container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
-        .section-title{font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:14px}
-        .apps-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-        .app-card{background:white;border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;transition:all 0.2s ease;cursor:pointer;animation:fadeIn 0.4s ease forwards;opacity:0}
-        .app-card:nth-child(1){animation-delay:0.05s}
-        .app-card:nth-child(2){animation-delay:0.1s}
-        .app-card:nth-child(3){animation-delay:0.15s}
-        .app-card:nth-child(4){animation-delay:0.2s}
-        .app-card:nth-child(5){animation-delay:0.25s}
-        .app-card:nth-child(6){animation-delay:0.3s}
-        .app-card:nth-child(7){animation-delay:0.35s}
-        .app-card:hover{box-shadow:0 8px 30px -5px rgba(0,0,0,0.1);transform:translateY(-2px)}
-        .app-card:active{transform:scale(0.98)}
-        .app-header{padding:14px 14px 0;display:flex;align-items:flex-start;gap:10px}
-        .app-icon-box{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px -2px rgba(0,0,0,0.2)}
-        .app-icon-box svg{width:22px;height:22px}
-        .app-name{font-size:0.88rem;font-weight:700;color:#111827}
-        .app-desc{font-size:0.68rem;color:#6b7280;line-height:1.4;margin-top:2px}
-        .app-body{padding:12px 14px}
-        .modules-label{font-size:0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#b0b8c4;margin-bottom:6px}
-        .modules-grid{display:grid;grid-template-columns:1fr;gap:4px}
-        .mod-tag{display:flex;align-items:center;gap:5px;padding:5px 8px;border-radius:7px;font-size:0.65rem;font-weight:500;border:1px solid transparent;transition:all 0.15s ease}
-        .mod-tag svg{width:12px;height:12px;flex-shrink:0}
-        .app-footer{padding:0 14px 14px;display:flex;align-items:center;gap:8px}
-        .btn-open{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;border:none;font-size:0.72rem;font-weight:600;cursor:pointer;text-decoration:none;color:white;transition:all 0.2s ease}
-        .btn-open:active{transform:scale(0.97)}
-        .btn-open svg{width:15px;height:15px}
-        .footer{text-align:center;padding:24px 16px;color:#b0b8c4;font-size:0.72rem;border-top:1px solid #f0f1f5}
-        @media(min-width:640px){.hero{padding:60px 24px 44px}.hero h1{font-size:2.6rem}.hero p{font-size:1rem}.hero-stats{gap:48px}.hero-stat-num{font-size:1.8rem}.container{padding:32px 24px 80px}.apps-list{gap:16px}.app-header{padding:20px 20px 0;gap:14px}.app-icon-box{width:50px;height:50px;border-radius:14px}.app-icon-box svg{width:26px;height:26px}.app-name{font-size:1rem}.app-desc{font-size:0.78rem;margin-top:3px}.app-body{padding:16px 20px}.modules-label{font-size:0.65rem;margin-bottom:8px}.modules-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px}.mod-tag{padding:6px 10px;font-size:0.72rem;gap:6px}.mod-tag svg{width:14px;height:14px}.app-footer{padding:0 20px 20px}.btn-open{padding:10px 20px;font-size:0.82rem}}
-        @media(min-width:900px){.apps-list{grid-template-columns:repeat(3,1fr);gap:20px}}
-      `}</style>
+      <style>{CSS}</style>
 
       <div className="lang-toggle">
         <button className={!isAr ? "active" : ""} onClick={() => setLang("fr")}>FR</button>
@@ -193,8 +203,8 @@ export default function App() {
 
       <header className="hero">
         <div className="hero-badge">{I.zap("#facc15")} {L.badge}</div>
-        <h1>{isAr ? "\u0643\u0644 \u0641\u064a \u0635\u0641\u062d\u0629" : "Tous Sur 1"}</h1>
-        <p>{isAr ? "\u062c\u0645\u064a\u0639 \u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0627\u0644\u062a\u0623\u0633\u064a\u0633 \u0641\u064a \u0645\u0643\u0627\u0646 \u0648\u0627\u062d\u062f. \u0627\u062e\u062a\u0631 \u0648\u0627\u0636\u063a\u0637." : "Toutes vos applications de gestion en un seul endroit. Choisissez et cliquez."}</p>
+        <h1>SIR APPS</h1>
+        <p>{isAr ? "\u062c\u0645\u064a\u0639 \u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0627\u0644\u062a\u0623\u0633\u064a\u0633 \u0641\u064a \u0645\u0643\u0627\u0646 \u0648\u0627\u062d\u062f." : "Toutes vos applications en un seul endroit."}</p>
         <div className="hero-stats">
           <div><div className="hero-stat-num">7</div><div className="hero-stat-label">{L.stats[0]}</div></div>
           <div><div className="hero-stat-num">50+</div><div className="hero-stat-label">{L.stats[1]}</div></div>
@@ -202,37 +212,20 @@ export default function App() {
         </div>
       </header>
 
+      <SearchBar onSearch={setFilter} L={L} />
+
       <main className="container">
-        <div className="section-title">{L.section}</div>
+        <div className="section-title">{filter ? `${filtered.length} ${isAr ? "\u0646\u062a\u064a\u062c\u0629" : "resultats"}` : L.all}</div>
         <div className="apps-list">
-          {apps.map((app) => {
+          {filtered.map((app) => {
             const info = isAr ? app.ar : app.fr;
             return (
               <div key={app.id} className="app-card" onClick={() => setDetail(app)}>
-                <div className="app-header">
+                <div className="app-card-inner">
                   <div className="app-icon-box" style={{background:app.gradient}}>
                     <span style={{color:"white"}}>{app.icon("white")}</span>
                   </div>
-                  <div style={{flex:1,minWidth:0}}>
-                    <div className="app-name">{info.name}</div>
-                    <div className="app-desc">{info.desc}</div>
-                  </div>
-                </div>
-                <div className="app-body">
-                  <div className="modules-label">{app.modules.length} {isAr ? "\u0648\u062d\u062f\u0627\u062a \u0645\u0634\u0645\u0648\u0644\u0629" : "modules inclus"}</div>
-                  <div className="modules-grid">
-                    {app.modules.slice(0,4).map((mod,i) => (
-                      <div key={i} className="mod-tag" style={{background:app.colorLight,color:"#374151",borderColor:app.color+"12"}}>
-                        {mod.icon(app.color)}
-                        {isAr ? mod.ar : mod.fr}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="app-footer">
-                  <span className="btn-open" style={{background:app.color}} onClick={(e) => {e.stopPropagation();window.open(app.url,"_blank")}}>
-                    {I.external("white")} {L.open}
-                  </span>
+                  <div className="app-name">{info.name}</div>
                 </div>
               </div>
             );
@@ -240,7 +233,61 @@ export default function App() {
         </div>
       </main>
 
-      <footer className="footer">{L.footer}</footer>
+      <PinnedBar L={L} />
+      <WhatsAppButton L={L} showAnim={showWA} />
+
+      <footer className="footer" style={{paddingBottom:60}}>{L.footer}</footer>
     </>
   );
 }
+
+const CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transition:font-family .2s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes expandIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+@keyframes waBounce{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 15px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.wa-anim{animation:waBounce 1s ease 3,waPulse 1.5s ease 3}
+.lang-toggle{position:fixed;top:12px;z-index:100;display:flex;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:50px;overflow:hidden;backdrop-filter:blur(12px);right:12px}
+.lang-toggle button{padding:6px 14px;border:none;background:transparent;color:rgba(255,255,255,0.6);font-size:.72rem;font-weight:600;cursor:pointer;transition:all .2s}
+.lang-toggle button.active{background:rgba(255,255,255,0.2);color:white;border-radius:50px}
+.hero{text-align:center;padding:48px 16px 28px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);color:white;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(99,102,241,0.15) 0%,transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:250px;height:250px;background:radial-gradient(circle,rgba(236,72,153,0.1) 0%,transparent 70%);border-radius:50%}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:50px;font-size:.7rem;font-weight:500;margin-bottom:14px;backdrop-filter:blur(10px);position:relative;z-index:1}
+.hero h1{font-size:1.5rem;font-weight:800;margin-bottom:8px;letter-spacing:-0.02em;position:relative;z-index:1}
+.hero p{font-size:.82rem;opacity:.7;max-width:400px;margin:0 auto;line-height:1.5;position:relative;z-index:1}
+.hero-stats{display:flex;justify-content:center;gap:28px;margin-top:22px;position:relative;z-index:1}
+.hero-stat-num{font-size:1.3rem;font-weight:700}
+.hero-stat-label{font-size:.6rem;opacity:.5;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.container{max-width:1100px;margin:0 auto;padding:16px 12px 60px}
+.section-title{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:10px;padding:0 4px}
+.apps-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.app-card{background:white;border-radius:14px;border:1px solid #e5e7eb;cursor:pointer;transition:all .2s ease;animation:fadeIn .4s ease forwards;opacity:0;overflow:hidden}
+.app-card:nth-child(1){animation-delay:.03s}.app-card:nth-child(2){animation-delay:.06s}.app-card:nth-child(3){animation-delay:.09s}.app-card:nth-child(4){animation-delay:.12s}.app-card:nth-child(5){animation-delay:.15s}.app-card:nth-child(6){animation-delay:.18s}.app-card:nth-child(7){animation-delay:.21s}
+.app-card:hover{box-shadow:0 6px 24px -4px rgba(0,0,0,0.1);transform:translateY(-2px)}
+.app-card:active{transform:scale(.96)}
+.app-card-inner{padding:16px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.app-icon-box{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px -2px rgba(0,0,0,0.2)}
+.app-icon-box svg{width:24px;height:24px}
+.app-name{font-size:.82rem;font-weight:700;color:#111827;line-height:1.3}
+.footer{text-align:center;padding:20px 16px;color:#b0b8c4;font-size:.7rem;border-top:1px solid #f0f1f5}
+@media(min-width:640px){
+  .hero{padding:56px 24px 36px}
+  .hero h1{font-size:2.2rem}
+  .hero p{font-size:.92rem}
+  .hero-stats{gap:44px}
+  .hero-stat-num{font-size:1.6rem}
+  .container{padding:28px 24px 80px}
+  .apps-list{grid-template-columns:repeat(3,1fr);gap:16px}
+  .app-card-inner{padding:20px 16px}
+  .app-icon-box{width:56px;height:56px}
+  .app-icon-box svg{width:28px;height:28px}
+  .app-name{font-size:.92rem}
+}
+@media(min-width:900px){
+  .apps-list{grid-template-columns:repeat(4,1fr);gap:20px}
+}
+`;
