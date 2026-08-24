@@ -74,13 +74,13 @@ export default function App() {
   useEffect(() => {
     document.documentElement.dir = isAr ? "rtl" : "ltr";
     document.documentElement.lang = isAr ? "ar" : "fr";
-    document.body.style.fontFamily = isAr ? "'Noto Sans Arabic','Inter',sans-serif" : "'Inter',-apple-system,BlinkMacSystemFont,sans-serif";
+    document.body.style.fontFamily = isAr ? "'IBM Plex Sans Arabic','Inter',sans-serif" : "'Inter',-apple-system,BlinkMacSystemFont,sans-serif";
   }, [isAr]);
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
         *{margin:0;padding:0;box-sizing:border-box}
         body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased}
         .lang-toggle{position:fixed;top:14px;z-index:100;display:flex;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:50px;overflow:hidden;backdrop-filter:blur(12px);right:14px}
