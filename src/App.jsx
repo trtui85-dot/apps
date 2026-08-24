@@ -118,17 +118,17 @@ export default function App() {
   useEffect(() => {
     document.documentElement.dir = isAr ? "rtl" : "ltr";
     document.documentElement.lang = isAr ? "ar" : "fr";
-    document.body.style.fontFamily = isAr ? "'IBM Plex Sans Arabic','Inter',sans-serif" : "'Inter',-apple-system,BlinkMacSystemFont,sans-serif";
+    document.body.style.fontFamily = isAr ? "'IBM Plex Sans Arabic',sans-serif" : "'Comfortaa',sans-serif";
   }, [isAr]);
 
   if (detail) {
     return (
       <>
         <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
-          *{margin:0;padding:0;box-sizing:border-box}
-          body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased}
-          @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
         `}</style>
         <DetailView app={detail} lang={lang} L={L} onBack={() => setDetail(null)} />
       </>
@@ -138,7 +138,7 @@ export default function App() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
         *{margin:0;padding:0;box-sizing:border-box}
         body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased}
         @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -149,14 +149,14 @@ export default function App() {
         .hero::before{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(99,102,241,0.15) 0%,transparent 70%);border-radius:50%}
         .hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:250px;height:250px;background:radial-gradient(circle,rgba(236,72,153,0.1) 0%,transparent 70%);border-radius:50%}
         .hero-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:50px;font-size:0.72rem;font-weight:500;margin-bottom:16px;backdrop-filter:blur(10px);position:relative;z-index:1}
-        .hero h1{font-size:2rem;font-weight:800;margin-bottom:10px;letter-spacing:-0.03em;position:relative;z-index:1}
+        .hero h1{font-size:1.6rem;font-weight:800;margin-bottom:10px;letter-spacing:-0.03em;position:relative;z-index:1}
         .hero p{font-size:0.88rem;opacity:0.7;max-width:440px;margin:0 auto;line-height:1.6;position:relative;z-index:1}
         .hero-stats{display:flex;justify-content:center;gap:32px;margin-top:28px;position:relative;z-index:1}
         .hero-stat-num{font-size:1.5rem;font-weight:700}
         .hero-stat-label{font-size:0.65rem;opacity:0.5;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px}
         .container{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
         .section-title{font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:14px}
-        .apps-list{display:flex;flex-direction:column;gap:16px}
+        .apps-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
         .app-card{background:white;border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;transition:all 0.2s ease;cursor:pointer;animation:fadeIn 0.4s ease forwards;opacity:0}
         .app-card:nth-child(1){animation-delay:0.05s}
         .app-card:nth-child(2){animation-delay:0.1s}
@@ -167,23 +167,23 @@ export default function App() {
         .app-card:nth-child(7){animation-delay:0.35s}
         .app-card:hover{box-shadow:0 8px 30px -5px rgba(0,0,0,0.1);transform:translateY(-2px)}
         .app-card:active{transform:scale(0.98)}
-        .app-header{padding:20px 20px 0;display:flex;align-items:flex-start;gap:14px}
-        .app-icon-box{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px -2px rgba(0,0,0,0.2)}
-        .app-icon-box svg{width:26px;height:26px}
-        .app-name{font-size:1.05rem;font-weight:700;color:#111827}
-        .app-desc{font-size:0.78rem;color:#6b7280;line-height:1.5;margin-top:3px}
-        .app-body{padding:16px 20px}
-        .modules-label{font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#b0b8c4;margin-bottom:8px}
-        .modules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px}
-        .mod-tag{display:flex;align-items:center;gap:6px;padding:7px 10px;border-radius:9px;font-size:0.72rem;font-weight:500;border:1px solid transparent;transition:all 0.15s ease}
-        .mod-tag svg{width:14px;height:14px;flex-shrink:0}
-        .app-footer{padding:0 20px 20px;display:flex;align-items:center;gap:10px}
-        .btn-open{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:10px;border:none;font-size:0.82rem;font-weight:600;cursor:pointer;text-decoration:none;color:white;transition:all 0.2s ease}
+        .app-header{padding:14px 14px 0;display:flex;align-items:flex-start;gap:10px}
+        .app-icon-box{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px -2px rgba(0,0,0,0.2)}
+        .app-icon-box svg{width:22px;height:22px}
+        .app-name{font-size:0.88rem;font-weight:700;color:#111827}
+        .app-desc{font-size:0.68rem;color:#6b7280;line-height:1.4;margin-top:2px}
+        .app-body{padding:12px 14px}
+        .modules-label{font-size:0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#b0b8c4;margin-bottom:6px}
+        .modules-grid{display:grid;grid-template-columns:1fr;gap:4px}
+        .mod-tag{display:flex;align-items:center;gap:5px;padding:5px 8px;border-radius:7px;font-size:0.65rem;font-weight:500;border:1px solid transparent;transition:all 0.15s ease}
+        .mod-tag svg{width:12px;height:12px;flex-shrink:0}
+        .app-footer{padding:0 14px 14px;display:flex;align-items:center;gap:8px}
+        .btn-open{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;border:none;font-size:0.72rem;font-weight:600;cursor:pointer;text-decoration:none;color:white;transition:all 0.2s ease}
         .btn-open:active{transform:scale(0.97)}
         .btn-open svg{width:15px;height:15px}
         .footer{text-align:center;padding:24px 16px;color:#b0b8c4;font-size:0.72rem;border-top:1px solid #f0f1f5}
-        @media(min-width:640px){.hero{padding:60px 24px 44px}.hero h1{font-size:2.6rem}.hero p{font-size:1rem}.hero-stats{gap:48px}.hero-stat-num{font-size:1.8rem}.container{padding:32px 24px 80px}.app-header{padding:24px 24px 0}.app-body{padding:20px 24px}.app-footer{padding:0 24px 24px}.modules-grid{grid-template-columns:repeat(auto-fill,minmax(145px,1fr))}}
-        @media(min-width:900px){.apps-list{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}}
+        @media(min-width:640px){.hero{padding:60px 24px 44px}.hero h1{font-size:2.6rem}.hero p{font-size:1rem}.hero-stats{gap:48px}.hero-stat-num{font-size:1.8rem}.container{padding:32px 24px 80px}.apps-list{gap:16px}.app-header{padding:20px 20px 0;gap:14px}.app-icon-box{width:50px;height:50px;border-radius:14px}.app-icon-box svg{width:26px;height:26px}.app-name{font-size:1rem}.app-desc{font-size:0.78rem;margin-top:3px}.app-body{padding:16px 20px}.modules-label{font-size:0.65rem;margin-bottom:8px}.modules-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px}.mod-tag{padding:6px 10px;font-size:0.72rem;gap:6px}.mod-tag svg{width:14px;height:14px}.app-footer{padding:0 20px 20px}.btn-open{padding:10px 20px;font-size:0.82rem}}
+        @media(min-width:900px){.apps-list{grid-template-columns:repeat(3,1fr);gap:20px}}
       `}</style>
 
       <div className="lang-toggle">
@@ -221,7 +221,7 @@ export default function App() {
                 <div className="app-body">
                   <div className="modules-label">{app.modules.length} {isAr ? "\u0648\u062d\u062f\u0627\u062a \u0645\u0634\u0645\u0648\u0644\u0629" : "modules inclus"}</div>
                   <div className="modules-grid">
-                    {app.modules.slice(0,6).map((mod,i) => (
+                    {app.modules.slice(0,4).map((mod,i) => (
                       <div key={i} className="mod-tag" style={{background:app.colorLight,color:"#374151",borderColor:app.color+"12"}}>
                         {mod.icon(app.color)}
                         {isAr ? mod.ar : mod.fr}
