@@ -176,12 +176,7 @@ export default function App() {
         <style>{CSS}</style>
         <div className="splash">
           <div className="splash-logo">
-            <svg viewBox="0 0 64 64" width="64" height="64" fill="none" className="splash-icon">
-              <rect width="64" height="64" rx="16" fill="url(#splashGrad)"/>
-              <path d="M18 20h8l-8 24h8l10-28h-8l6 18h-4l-12 16" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <circle cx="48" cy="28" r="4" stroke="white" strokeWidth="2.5"/>
-              <defs><linearGradient id="splashGrad" x1="0" y1="0" x2="64" y2="64"><stop stopColor="#6366f1"/><stop offset="1" stopColor="#3b82f6"/></linearGradient></defs>
-            </svg>
+            <img src="/sir-logo.png" alt="SIR APPS" className="splash-img" />
           </div>
           <div className="splash-title">SIR APPS</div>
           <div className="splash-sub">Plateforme integree</div>
@@ -260,7 +255,7 @@ body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transit
 @keyframes splashPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:.85}}
 .splash{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
 .splash-logo{animation:splashFade .8s ease both,splashPulse 1.5s ease-in-out 1}
-.splash-icon{filter:drop-shadow(0 8px 30px rgba(99,102,241,0.4))}
+.splash-img{width:180px;height:auto;filter:drop-shadow(0 8px 30px rgba(99,102,241,0.3));object-fit:contain}
 .splash-title{font-family:'Comfortaa',sans-serif;font-size:2.2rem;font-weight:800;color:white;letter-spacing:-.02em;animation:splashFade .8s ease .2s both}
 .splash-sub{font-size:.82rem;color:rgba(255,255,255,.5);animation:splashFade .8s ease .4s both}
 .splash-loader{width:120px;height:3px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-top:12px;animation:splashFade .8s ease .5s both}
