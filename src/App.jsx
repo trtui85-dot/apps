@@ -38,6 +38,7 @@ const I = {
   settings: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.6.852.997 1.51 1H21a2 2 0 010 4h-.09c-.658.003-1.25.396-1.51 1z"/></svg>,
   search: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>,
   chevronRight: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>,
+  arrowLeft: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>,
   copy: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>,
   checkCircle: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>,
   eyeOff: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>,
@@ -105,7 +106,7 @@ function CredentialsPage({ app, lang, onBack }) {
         <div style={{position:"absolute",top:-60,right:-60,width:200,height:200,borderRadius:"50%",background:"rgba(255,255,255,0.08)"}}/>
         <div style={{position:"absolute",bottom:-40,left:-40,width:150,height:150,borderRadius:"50%",background:"rgba(255,255,255,0.05)"}}/>
         <div style={{maxWidth:420,margin:"0 auto",position:"relative",zIndex:1}}>
-          <button onClick={onBack} className="cred-back-btn">{I.chevronRight("white")} {L.goBack}</button>
+          <button onClick={onBack} className="cred-back-btn">{I.arrowLeft("white")} {L.goBack}</button>
           <div style={{textAlign:"center",marginTop:12}}>
             <div style={{width:60,height:60,borderRadius:16,background:"white",display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:12,overflow:"hidden"}}>
               <img src={app.logo} alt="" style={{width:"100%",height:"100%",objectFit:"contain"}} />
@@ -185,7 +186,7 @@ function PricingPage({ lang, onFree, onSubscribe, onBack }) {
   if (plan) {
     return (
       <div className="pricing-page">
-        <button className="pricing-back" onClick={() => setPlan(null)}>{I.chevronRight("#6366f1")} {L.back}</button>
+        <button className="pricing-back" onClick={() => setPlan(null)}>{I.arrowLeft("#6366f1")} {L.back}</button>
         <div className="pricing-pay-card">
           <div style={{fontSize:".72rem",color:"#9ca3af",marginBottom:4}}>{L.chosen}</div>
           <div style={{fontSize:"1.1rem",fontWeight:700,color:"#111827",marginBottom:16}}>
@@ -219,7 +220,7 @@ function PricingPage({ lang, onFree, onSubscribe, onBack }) {
 
   return (
     <div className="pricing-page">
-      <button className="pricing-back" onClick={onBack}>{I.chevronRight("#6366f1")} {L.back}</button>
+      <button className="pricing-back" onClick={onBack}>{I.arrowLeft("#6366f1")} {L.back}</button>
       <div className="pricing-header">
         <img src="/sir-logo.png" alt="SIR" style={{width:90,objectFit:"contain",marginBottom:8,filter:"drop-shadow(0 4px 12px rgba(0,0,0,0.15))"}} />
         <h1>{L.title}</h1>
@@ -255,9 +256,14 @@ function DetailView({ app, lang, L, onBack, onCreds }) {
         <div style={{position:"absolute",top:-60,right:-60,width:200,height:200,borderRadius:"50%",background:"rgba(255,255,255,0.08)"}}/>
         <div style={{position:"absolute",bottom:-40,left:-40,width:150,height:150,borderRadius:"50%",background:"rgba(255,255,255,0.05)"}}/>
         <div style={{maxWidth:600,margin:"0 auto",position:"relative",zIndex:1}}>
-          <button onClick={onBack} className="detail-back-btn">
-            {I.chevronRight("white")} {L.back}
-          </button>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:20}}>
+            <button onClick={onBack} className="detail-back-btn">
+              {I.arrowLeft("white")} {L.back}
+            </button>
+            <button onClick={() => onCreds(app)} className="detail-creds-btn" style={{borderColor:app.color}}>
+              {I.shield(app.color)} {isAr ? "\u0645\u0639\u0631\u0641\u0627\u062a" : "Identifiants"}
+            </button>
+          </div>
           <div style={{display:"flex",alignItems:"center",gap:16,marginBottom:16}}>
             <div style={{width:64,height:64,borderRadius:16,background:"white",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,overflow:"hidden"}}>
               <img src={app.logo} alt={info.name} style={{width:"100%",height:"100%",objectFit:"contain"}} />
@@ -284,10 +290,6 @@ function DetailView({ app, lang, L, onBack, onCreds }) {
             </div>
           ))}
         </div>
-
-        <button onClick={() => onCreds(app)} style={{width:"100%",marginTop:16,padding:"14px",borderRadius:12,border:`2px solid ${app.color}`,background:"white",color:app.color,fontSize:".85rem",fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:8}}>
-          {I.shield(app.color)} {isAr ? "\u0639\u0631\u0636 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a" : "Voir les identifiants"}
-        </button>
       </div>
     </div>
   );
@@ -519,8 +521,10 @@ body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transit
 .app-name{font-size:.72rem;font-weight:700;color:#111827;line-height:1.2}
 .footer{text-align:center;padding:14px 12px;color:#b0b8c4;font-size:.65rem;border-top:1px solid #f0f1f5}
 
-.detail-back-btn,.cred-back-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:10;padding:7px 14px;color:white;font-size:.78rem;font-weight:600;cursor:pointer;display:inline-flex;alignItems:center;gap:6px;transform:scaleX(-1)}
-.detail-back-btn svg,.cred-back-btn svg{transform:scaleX(-1)}
+.detail-back-btn,.cred-back-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:10;padding:7px 14px;color:white;font-size:.78rem;font-weight:600;cursor:pointer;display:inline-flex;alignItems:center;gap:6px}
+.detail-back-btn svg,.cred-back-btn svg{width:16px;height:16px}
+.detail-creds-btn{background:rgba(255,255,255,0.9);border:1.5px solid;padding:5px 12px;border-radius:8;font-size:.68rem;font-weight:600;cursor:pointer;display:inline-flex;alignItems:center;gap:5px;color:#374151;backdrop-filter:blur(8px)}
+.detail-creds-btn svg{width:14px;height:14px}
 
 .cred-page .cred-row{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #f3f4f6}
 .cred-page .cred-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
@@ -532,8 +536,8 @@ body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transit
 .cred-eye-btn svg{width:18px;height:18px}
 
 .pricing-page{min-height:100vh;background:#f5f6fa;padding:16px 14px 40px;display:flex;flex-direction:column;align-items:center}
-.pricing-back{display:inline-flex;align-items:center;gap:4px;background:none;border:none;color:#6366f1;font-size:.75rem;font-weight:600;cursor:pointer;padding:8px 0;margin-bottom:4px;align-self:flex-start;transform:scaleX(-1)}
-.pricing-back svg{transform:scaleX(-1)}
+.pricing-back{display:inline-flex;align-items:center;gap:4px;background:none;border:none;color:#6366f1;font-size:.75rem;font-weight:600;cursor:pointer;padding:8px 0;margin-bottom:4px;align-self:flex-start}
+.pricing-back svg{width:16px;height:16px}
 .pricing-header{text-align:center;padding:12px 0 20px}
 .pricing-header h1{font-size:1.4rem;font-weight:800;color:#111827;margin-bottom:4px}
 .pricing-header p{font-size:.75rem;color:#6b7280}
