@@ -250,7 +250,7 @@ export default function App() {
 
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transition:font-family .2s}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @keyframes waBounce{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
@@ -284,7 +284,6 @@ body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transit
 .app-card{background:white;border-radius:14px;border:1px solid #e5e7eb;cursor:pointer;transition:all .2s ease;animation:fadeIn .4s ease forwards;opacity:0;overflow:hidden}
 .app-card:nth-child(1){animation-delay:.03s}.app-card:nth-child(2){animation-delay:.06s}.app-card:nth-child(3){animation-delay:.09s}.app-card:nth-child(4){animation-delay:.12s}.app-card:nth-child(5){animation-delay:.15s}.app-card:nth-child(6){animation-delay:.18s}.app-card:nth-child(7){animation-delay:.21s}
 .app-card:hover{box-shadow:0 6px 24px -4px rgba(0,0,0,0.1);transform:translateY(-2px)}
-.app-card:active{transform:scale(.96)}
 .app-card-inner{padding:16px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
 .app-icon-box{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px -2px rgba(0,0,0,0.2)}
 .app-icon-box svg{width:24px;height:24px}
