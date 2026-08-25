@@ -137,12 +137,125 @@ function WhatsAppButton({ showAnim }) {
 }
 
 
+const pricingFr = {
+  title: "Abonnez-vous",
+  subtitle: "Acces complet a toutes les applications",
+  monthly: "Mensuel", monthlyPrice: "1 500 MRU", monthlyPeriod: "/mois", monthlyDesc: "Acces complet pendant 30 jours",
+  lifetime: "A vie", lifetimePrice: "60 000 MRU", lifetimeDesc: "Acces a vie, pas de renouvellement",
+  tryFree: "Essayer gratuitement",
+  subscribe: "S'abonner",
+  payTitle: "Paiement Bankily",
+  transfer: "Transferez le montant a :",
+  number: "36 44 55 23",
+  confirm: "Confirmer sur WhatsApp",
+  back: "Retour",
+  howTo: "Comment payer :",
+  step1: "1. Ouvrez Bankily sur votre telephone",
+  step2: "2. Effectuez le transfert au numero ci-dessus",
+  step3: "3. Confirmez sur WhatsApp avec la preuve",
+  chosen: "Vous avez choisi :",
+};
+
+const pricingAr = {
+  title: "\u0627\u0634\u062a\u0631\u0643",
+  subtitle: "\u0648\u0635\u0644 \u0643\u0627\u0645\u0644 \u0625\u0644\u0649 \u062c\u0645\u064a\u0639 \u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a",
+  monthly: "\u0634\u0647\u0631\u064a", monthlyPrice: "1 500 \u0645\u0631\u0648", monthlyPeriod: "/\u0634\u0647\u0631", monthlyDesc: "\u0648\u0635\u0644 \u0643\u0627\u0645\u0644 \u0644\u0634\u0647\u0631 30 \u064a\u0648\u0645",
+  lifetime: "\u0625\u0644\u0649 \u0627\u0644\u0623\u0628\u0627\u062f", lifetimePrice: "60 000 \u0645\u0631\u0648", lifetimeDesc: "\u0648\u0635\u0644 \u0645\u0639\u062f \u0627\u0644\u062d\u064a\u0627\u0629\u060c \u0628\u062f\u0648\u0646 \u062a\u062c\u062f\u064a\u062f",
+  tryFree: "\u062a\u062c\u0631\u0628 \u0645\u062c\u0627\u0646\u064a\u0627\u064b",
+  subscribe: "\u0627\u0634\u062a\u0631\u0643",
+  payTitle: "\u0627\u0644\u062f\u0641\u0639 \u0628\u0627\u0646\u0643\u064a\u0644\u064a",
+  transfer: "\u062a\u062d\u0648\u064a\u0644 \u0627\u0644\u0645\u0628\u0644\u063a \u0625\u0644\u0649 :",
+  number: "36 44 55 23",
+  confirm: "\u062a\u0623\u0643\u064a\u062f \u0639\u0644\u0649 WhatsApp",
+  back: "\u0631\u062c\u0648\u0639",
+  howTo: "\u0643\u064a\u0641 \u062a\u062f\u0641\u0639 :",
+  step1: "1. \u0627\u0641\u062a\u062d Bankily \u0639\u0644\u0649 \u062a\u0644\u0641\u0648\u0646\u0643",
+  step2: "2. \u062a\u062d\u0648\u064a\u0644 \u0627\u0644\u0645\u0628\u0644\u063a \u0644\u0644\u0631\u0642\u0645 \u0627\u0644\u0623\u0639\u0644\u0627\u0645 \u0623\u0639\u0644\u0627",
+  step3: "3. \u062a\u0623\u0643\u064a\u062f \u0639\u0644\u0649 WhatsApp \u0645\u0639 \u0627\u0644\u0625\u064a\u062a\u0627\u0645\u0629",
+  chosen: "\u0627\u0644\u062e\u064a\u0627\u0631 \u0627\u0644\u0645\u062d\u062f\u062f :",
+};
+
+function PricingPage({ lang, onFree, onSubscribe }) {
+  const isAr = lang === "ar";
+  const L = isAr ? pricingAr : pricingFr;
+  const [plan, setPlan] = useState(null);
+
+  const handleConfirm = () => {
+    const msg = isAr
+      ? `\u062a\u0631\u063a\u0628 \u0627\u0634\u062a\u0631\u0627\u0643 \u0641\u064a SIR APPS\n\u0627\u0644\u062e\u0637\u0629: ${plan === "monthly" ? "1500 MRU/mois" : "60000 MRU \u0625\u0644\u0649 \u0627\u0644\u0623\u0628\u0627\u062f"}\n\u0637\u0631\u064a\u0642 \u0627\u0644\u062f\u0641\u0639: Bankily\n\u0631\u0642\u0645 \u0627\u0644\u062a\u062d\u0648\u064a\u0644: 36445523`
+      : `Je souhaite souscrire a SIR APPS\nForfait: ${plan === "monthly" ? "1500 MRU/mois" : "60000 MRU a vie"}\nMode de paiement: Bankily\nNumero de transfert: 36445523`;
+    window.open(`https://wa.me/22236445523?text=${encodeURIComponent(msg)}`, "_blank");
+    onSubscribe();
+  };
+
+  if (plan) {
+    return (
+      <div className="pricing-page">
+        <button className="pricing-back" onClick={() => setPlan(null)}>{I.arrowLeft("#6366f1")} {L.back}</button>
+        <div className="pricing-pay-card">
+          <div style={{fontSize:".72rem",color:"#9ca3af",marginBottom:4}}>{L.chosen}</div>
+          <div style={{fontSize:"1.1rem",fontWeight:700,color:"#111827",marginBottom:16}}>
+            {plan === "monthly" ? `${L.monthly} - ${L.monthlyPrice}` : `${L.lifetime} - ${L.lifetimePrice}`}
+          </div>
+          <div style={{fontSize:".8rem",fontWeight:700,color:"#111827",marginBottom:10}}>{L.payTitle}</div>
+          <div style={{display:"flex",alignItems:"center",gap:10,background:"#f0fdf4",borderRadius:12,padding:"12px 14px",marginBottom:16}}>
+            <img src="/logo-bankily.png" alt="Bankily" style={{width:36,height:36,borderRadius:8,objectFit:"contain"}} />
+            <div>
+              <div style={{fontSize:".68rem",color:"#6b7280"}}>{L.transfer}</div>
+              <div style={{fontSize:"1rem",fontWeight:800,color:"#111827",letterSpacing:1}}>{L.number}</div>
+            </div>
+          </div>
+          <div style={{fontSize:".72rem",fontWeight:600,color:"#374151",marginBottom:8}}>{L.howTo}</div>
+          <div style={{fontSize:".7rem",color:"#6b7280",lineHeight:1.8,marginBottom:20}}>
+            <div>{L.step1}</div>
+            <div>{L.step2}</div>
+            <div>{L.step3}</div>
+          </div>
+          <button className="pricing-btn-wa" onClick={handleConfirm}>
+            <svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            {L.confirm}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="pricing-page">
+      <div className="pricing-header">
+        <img src="/sir-logo.png" alt="SIR" style={{width:100,objectFit:"contain",marginBottom:8,filter:"drop-shadow(0 4px 12px rgba(0,0,0,0.15))"}} />
+        <h1>{L.title}</h1>
+        <p>{L.subtitle}</p>
+      </div>
+      <div className="pricing-cards">
+        <div className="pricing-card" onClick={() => setPlan("monthly")}>
+          <div className="pricing-badge">Populaire</div>
+          <div className="pricing-plan-name">{L.monthly}</div>
+          <div className="pricing-price">{L.monthlyPrice}<span>{L.monthlyPeriod}</span></div>
+          <div className="pricing-desc">{L.monthlyDesc}</div>
+          <div className="pricing-btn">{L.subscribe}</div>
+        </div>
+        <div className="pricing-card pricing-card-best" onClick={() => setPlan("lifetime")}>
+          <div className="pricing-badge pricing-badge-best">{isAr ? "\u0623\u0641\u0636\u0644" : "Meilleur"}</div>
+          <div className="pricing-plan-name">{L.lifetime}</div>
+          <div className="pricing-price">{L.lifetimePrice}</div>
+          <div className="pricing-desc">{L.lifetimeDesc}</div>
+          <div className="pricing-btn pricing-btn-best">{L.subscribe}</div>
+        </div>
+      </div>
+      <button className="pricing-try" onClick={onFree}>{L.tryFree}</button>
+    </div>
+  );
+}
+
+
 export default function App() {
   const [detail, setDetail] = useState(null);
   const [lang, setLang] = useState("fr");
   const [filter, setFilter] = useState("");
   const [showWA, setShowWA] = useState(false);
   const [splash, setSplash] = useState(true);
+  const [subscribed, setSubscribed] = useState(() => !!localStorage.getItem("sirapps_sub"));
   const isAr = lang === "ar";
   const L = isAr ? labelAr : labelFr;
 
@@ -182,6 +295,23 @@ export default function App() {
           <div className="splash-sub">Plateforme integree</div>
           <div className="splash-loader"><div className="splash-bar"/></div>
         </div>
+      </>
+    );
+  }
+
+  if (!subscribed) {
+    return (
+      <>
+        <style>{CSS}</style>
+        <div className="lang-toggle">
+          <button className={!isAr ? "active" : ""} onClick={() => setLang("fr")}>FR</button>
+          <button className={isAr ? "active" : ""} onClick={() => setLang("ar")}>AR</button>
+        </div>
+        <PricingPage
+          lang={lang}
+          onFree={() => { setSubscribed(true); sessionStorage.setItem("sirapps_free","1"); }}
+          onSubscribe={() => { localStorage.setItem("sirapps_sub","1"); setSubscribed(true); }}
+        />
       </>
     );
   }
@@ -300,7 +430,38 @@ body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transit
 @media(min-width:900px){
   .apps-list{grid-template-columns:repeat(4,1fr);gap:20px}
 }
-@media(min-width:900px){
-  .apps-list{grid-template-columns:repeat(4,1fr);gap:20px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+.pricing-page{min-height:100vh;background:#f5f6fa;padding:16px 14px 40px;display:flex;flex-direction:column;align-items:center}
+.pricing-back{display:inline-flex;align-items:center;gap:4px;background:none;border:none;color:#6366f1;font-size:.75rem;font-weight:600;cursor:pointer;padding:8px 0;margin-bottom:4px;align-self:flex-start}
+.pricing-header{text-align:center;padding:24px 0 20px}
+.pricing-header h1{font-size:1.4rem;font-weight:800;color:#111827;margin-bottom:4px}
+.pricing-header p{font-size:.75rem;color:#6b7280}
+.pricing-cards{display:flex;flex-direction:column;gap:12px;width:100%;max-width:400px;margin-bottom:16px;animation:fadeUp .5s ease both}
+.pricing-card{background:white;border-radius:16px;padding:20px 16px;border:2px solid #e5e7eb;cursor:pointer;position:relative;transition:all .25s ease;animation:fadeUp .5s ease both}
+.pricing-card:nth-child(2){animation-delay:.1s}
+.pricing-card:hover,.pricing-card:active{border-color:#6366f1;box-shadow:0 8px 30px -6px rgba(99,102,241,0.25);transform:translateY(-2px)}
+.pricing-card-best{border-color:#6366f1;background:linear-gradient(135deg,#eef2ff,#f5f3ff)}
+.pricing-badge{position:absolute;top:-10px;right:12px;background:#e5e7eb;color:#6b7280;font-size:.55rem;font-weight:700;padding:2px 8px;border-radius:50px;text-transform:uppercase;letter-spacing:.5px}
+.pricing-badge-best{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white}
+.pricing-plan-name{font-size:.8rem;font-weight:600;color:#6b7280;margin-bottom:6px}
+.pricing-price{font-size:1.6rem;font-weight:800;color:#111827;margin-bottom:4px}
+.pricing-price span{font-size:.8rem;font-weight:500;color:#9ca3af}
+.pricing-desc{font-size:.7rem;color:#6b7280;margin-bottom:14px}
+.pricing-btn{background:linear-gradient(135deg,#e5e7eb,#f3f4f6);color:#374151;font-size:.75rem;font-weight:700;padding:10px;border-radius:10px;text-align:center;transition:all .2s}
+.pricing-btn-best{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white}
+.pricing-card:hover .pricing-btn{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white}
+.pricing-try{background:none;border:2px solid #d1d5db;color:#6b7280;font-size:.75rem;font-weight:600;padding:12px 24px;border-radius:12px;cursor:pointer;transition:all .2s;width:100%;max-width:400px;animation:fadeUp .5s ease .2s both}
+.pricing-try:hover{border-color:#6366f1;color:#6366f1}
+.pricing-pay-card{background:white;border-radius:16px;padding:20px 16px;width:100%;max-width:400px;animation:fadeUp .4s ease both}
+.pricing-btn-wa{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#25d366,#128c7e);color:white;font-size:.8rem;font-weight:700;padding:14px;border-radius:12px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px -2px rgba(37,211,102,0.3)}
+.pricing-btn-wa:hover{box-shadow:0 6px 24px -2px rgba(37,211,102,0.4);transform:translateY(-1px)}
+@media(min-width:640px){
+  .pricing-page{padding:32px 24px 60px}
+  .pricing-header h1{font-size:1.8rem}
+  .pricing-cards{flex-direction:row;max-width:600px}
+  .pricing-card{padding:28px 24px}
+  .pricing-try,.pricing-pay-card{max-width:600px}
+  .pricing-price{font-size:2rem}
 }
 `;
