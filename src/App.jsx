@@ -142,8 +142,14 @@ export default function App() {
   const [lang, setLang] = useState("fr");
   const [filter, setFilter] = useState("");
   const [showWA, setShowWA] = useState(false);
+  const [splash, setSplash] = useState(true);
   const isAr = lang === "ar";
   const L = isAr ? labelAr : labelFr;
+
+  useEffect(() => {
+    const t = setTimeout(() => setSplash(false), 2400);
+    return () => clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     document.documentElement.dir = isAr ? "rtl" : "ltr";
@@ -163,6 +169,27 @@ export default function App() {
     const nar = a.ar.name.toLowerCase();
     return nfr.includes(q) || nar.includes(q);
   });
+
+  if (splash) {
+    return (
+      <>
+        <style>{CSS}</style>
+        <div className="splash">
+          <div className="splash-logo">
+            <svg viewBox="0 0 64 64" width="64" height="64" fill="none" className="splash-icon">
+              <rect width="64" height="64" rx="16" fill="url(#splashGrad)"/>
+              <path d="M18 20h8l-8 24h8l10-28h-8l6 18h-4l-12 16" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="48" cy="28" r="4" stroke="white" strokeWidth="2.5"/>
+              <defs><linearGradient id="splashGrad" x1="0" y1="0" x2="64" y2="64"><stop stopColor="#6366f1"/><stop offset="1" stopColor="#3b82f6"/></linearGradient></defs>
+            </svg>
+          </div>
+          <div className="splash-title">SIR APPS</div>
+          <div className="splash-sub">Plateforme integree</div>
+          <div className="splash-loader"><div className="splash-bar"/></div>
+        </div>
+      </>
+    );
+  }
 
   if (detail) {
     return (
@@ -228,6 +255,16 @@ body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transit
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @keyframes waBounce{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
 @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 12px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+@keyframes splashFade{0%{opacity:0;transform:scale(.8) translateY(20px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes splashBar{0%{width:0%}100%{width:100%}}
+@keyframes splashPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:.85}}
+.splash{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.splash-logo{animation:splashFade .8s ease both,splashPulse 1.5s ease-in-out 1}
+.splash-icon{filter:drop-shadow(0 8px 30px rgba(99,102,241,0.4))}
+.splash-title{font-family:'Comfortaa',sans-serif;font-size:2.2rem;font-weight:800;color:white;letter-spacing:-.02em;animation:splashFade .8s ease .2s both}
+.splash-sub{font-size:.82rem;color:rgba(255,255,255,.5);animation:splashFade .8s ease .4s both}
+.splash-loader{width:120px;height:3px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-top:12px;animation:splashFade .8s ease .5s both}
+.splash-bar{height:100%;background:linear-gradient(90deg,#6366f1,#3b82f6,#6366f1);border-radius:4px;animation:splashBar 1.8s ease .6s both}
 .wa-anim{animation:waBounce 1s ease 3,waPulse 1.5s ease 3}
 .lang-toggle{position:fixed;top:12px;z-index:100;display:flex;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:50px;overflow:hidden;backdrop-filter:blur(12px);right:12px}
 .lang-toggle button{padding:6px 14px;border:none;background:transparent;color:rgba(255,255,255,0.6);font-size:.72rem;font-weight:600;cursor:pointer;transition:all .2s}
