@@ -35,41 +35,218 @@ const I = {
   heart: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.42 4.58a5.4 5.4 0 00-7.65 0l-.77.78-.77-.78a5.4 5.4 0 00-7.65 7.65l.78.77L12 20.65l7.64-7.63.78-.77a5.4 5.4 0 000-7.67z"/></svg>,
   userPlus: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>,
   activity: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
-  arrowLeft: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>,
   settings: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.6.852.997 1.51 1H21a2 2 0 010 4h-.09c-.658.003-1.25.396-1.51 1z"/></svg>,
   search: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>,
+  chevronRight: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>,
+  copy: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>,
+  checkCircle: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>,
+  eyeOff: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>,
+  eye: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>,
+  shield: (c) => <svg viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
 };
 
 const apps = [
-  { id: "erp", logo: "/logos/sir-erp-manager-logo.png", color: "#2563eb", gradient: "linear-gradient(135deg, #2563eb, #3b82f6)", colorLight: "#eff6ff", url: "https://erp-app-wheat.vercel.app", fr: { name: "ERP Manager", desc: "Gestion complete de votre entreprise : approvisionnement, ventes, stocks, employs et finances." }, ar: { name: "\u0645\u062f\u064a\u0631 \u0627\u0644\u0645\u0639\u0631\u0648\u0641\u0629", desc: "\u0625\u062f\u0627\u0631\u0629 \u0634\u0627\u0645\u0644\u0629 \u0644\u0645\u0648\u0633\u0633\u062a\u0643: \u0627\u0644\u0645\u0634\u062a\u0631\u064a\u0627\u062a\u060c \u0627\u0644\u0645\u0628\u064a\u0639\u0627\u062a\u060c \u0627\u0644\u0645\u062e\u0632\u0648\u0646\u0627\u062a\u060c \u0627\u0644\u0645\u0648\u0638\u0641\u064a\u0646 \u0648\u0627\u0644\u0645\u0627\u0644\u064a\u0627\u062a." }, modules: [
+  { id: "erp", logo: "/logos/sir-erp-manager-logo.png", color: "#2563eb", gradient: "linear-gradient(135deg, #2563eb, #3b82f6)", colorLight: "#eff6ff", url: "https://erp-app-wheat.vercel.app", creds: { phone: "22222222", pass: "2222", label: "PIN" }, fr: { name: "ERP Manager", desc: "Gestion complete de votre entreprise : approvisionnement, ventes, stocks, employs et finances." }, ar: { name: "\u0645\u062f\u064a\u0631 \u0627\u0644\u0645\u0639\u0631\u0648\u0641\u0629", desc: "\u0625\u062f\u0627\u0631\u0629 \u0634\u0627\u0645\u0644\u0629 \u0644\u0645\u0648\u0633\u0633\u062a\u0643: \u0627\u0644\u0645\u0634\u062a\u0631\u064a\u0627\u062a\u060c \u0627\u0644\u0645\u0628\u064a\u0639\u0627\u062a\u060c \u0627\u0644\u0645\u062e\u0632\u0648\u0646\u0627\u062a\u060c \u0627\u0644\u0645\u0648\u0638\u0641\u064a\u0646 \u0648\u0627\u0644\u0645\u0627\u0644\u064a\u0627\u062a." }, modules: [
     { fr: "Journal de bord", ar: "\u0644\u0648\u062d\u0629 \u0627\u0644\u062a\u062d\u0643\u0645", icon: I.dashboard }, { fr: "Approvisionnement", ar: "\u0627\u0644\u0645\u0634\u062a\u0631\u064a\u0627\u062a", icon: I.truck }, { fr: "Factures d'achat", ar: "\u0641\u0648\u0627\u062a\u064a\u0631 \u0627\u0644\u0634\u0631\u0627\u0621", icon: I.receipt }, { fr: "Produits", ar: "\u0627\u0644\u0645\u0646\u062a\u062c\u0627\u062a", icon: I.package }, { fr: "Lots", ar: "\u0627\u0644\u062f\u0631\u0631", icon: I.warehouse }, { fr: "Clients", ar: "\u0627\u0644\u0639\u0645\u0644\u0627\u0621", icon: I.users }, { fr: "Ventes", ar: "\u0627\u0644\u0645\u0628\u064a\u0639\u0627\u062a", icon: I.cart }, { fr: "Dettes", ar: "\u0627\u0644\u062f\u064a\u0648\u0646", icon: I.alert }, { fr: "Distributions", ar: "\u0627\u0644\u062a\u0648\u0632\u064a\u0639\u0627\u062a", icon: I.exchange }, { fr: "Depenses", ar: "\u0627\u0644\u0645\u0635\u0631\u0648\u0641\u0627\u062a", icon: I.wallet }, { fr: "Pertes", ar: "\u0627\u0644\u062e\u0633\u0627\u0626\u0631", icon: I.trending }, { fr: "Rapports", ar: "\u0627\u0644\u062a\u0642\u0627\u0631\u064a\u0631", icon: I.barChart }, { fr: "Modes de paiement", ar: "\u0637\u0631\u0642 \u0627\u0644\u062f\u0641\u0639", icon: I.credit }, { fr: "Journalier", ar: "\u0627\u0644\u064a\u0648\u0645\u064a\u0629", icon: I.clipboard }, { fr: "Employes", ar: "\u0627\u0644\u0645\u0648\u0638\u0641\u064a\u0646", icon: I.userCheck }, { fr: "Categories", ar: "\u0627\u0644\u0641\u0626\u0627\u062a", icon: I.tags }, { fr: "Parametres", ar: "\u0627\u0644\u0625\u0639\u062f\u0627\u062f\u0627\u062a", icon: I.settings }
   ]},
-  { id: "factory", logo: "/logos/sir-factory-manager-logo.png", color: "#059669", gradient: "linear-gradient(135deg, #059669, #10b981)", colorLight: "#ecfdf5", url: "https://factory-app-btxq.onrender.com", fr: { name: "Factory Manager", desc: "Gestion de production, stocks de matiere premiere, suivi des lots et controle qualite." }, ar: { name: "\u0645\u062f\u064a\u0631 \u0627\u0644\u0645\u0635\u0646\u0639", desc: "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0625\u0646\u062a\u0627\u062c\u060c \u0627\u0644\u0645\u062e\u0632\u0648\u0646\u0627\u062a\u060c \u062a\u0628\u0639\u064a\u0629 \u0627\u0644\u0623\u0631\u0627\u0621 \u0648\u0627\u0644\u062c\u0648\u062f\u0629." }, modules: [
+  { id: "factory", logo: "/logos/sir-factory-manager-logo.png", color: "#059669", gradient: "linear-gradient(135deg, #059669, #10b981)", colorLight: "#ecfdf5", url: "https://factory-app-btxq.onrender.com", creds: { phone: "22222222", pass: "2222", label: "PIN" }, fr: { name: "Factory Manager", desc: "Gestion de production, stocks de matiere premiere, suivi des lots et controle qualite." }, ar: { name: "\u0645\u062f\u064a\u0631 \u0627\u0644\u0645\u0635\u0646\u0639", desc: "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0625\u0646\u062a\u0627\u062c\u060c \u0627\u0644\u0645\u062e\u0632\u0648\u0646\u0627\u062a\u060c \u062a\u0628\u0639\u064a\u0629 \u0627\u0644\u0623\u0631\u0627\u0621 \u0648\u0627\u0644\u062c\u0648\u062f\u0629." }, modules: [
     { fr: "Produits", ar: "\u0627\u0644\u0645\u0646\u062a\u062c\u0627\u062a", icon: I.package }, { fr: "Matiere premiere", ar: "\u0627\u0644\u0645\u0648\u0627\u062f \u0627\u0644\u0623\u0648\u0644\u064a\u0629", icon: I.warehouse }, { fr: "Production", ar: "\u0627\u0644\u0625\u0646\u062a\u0627\u062c", icon: I.factory }, { fr: "Lots", ar: "\u0627\u0644\u062f\u0631\u0631", icon: I.clipboard }, { fr: "Qualite", ar: "\u0627\u0644\u062c\u0648\u062f\u0629", icon: I.check }, { fr: "Stocks", ar: "\u0627\u0644\u0645\u062e\u0632\u0648\u0646", icon: I.barChart }, { fr: "Parametres", ar: "\u0627\u0644\u0625\u0639\u062f\u0627\u062f\u0627\u062a", icon: I.settings }
   ]},
-  { id: "crm", logo: "/logos/sir-crm-client-logo.png", color: "#d97706", gradient: "linear-gradient(135deg, #d97706, #f59e0b)", colorLight: "#fffbeb", url: "https://crm-app-ne4w.onrender.com", fr: { name: "CRM Client", desc: "Relation client, suivi des contacts, historique des interactions et gestion commerciale." }, ar: { name: "\u0639\u0644\u0627\u0642\u0627\u062a \u0627\u0644\u0639\u0645\u0644\u0627\u0621", desc: "\u062a\u062a\u0628\u0639 \u0627\u0644\u0639\u0645\u0644\u0627\u0621\u060c \u062c\u0647\u0627\u062a \u0627\u0644\u0627\u062a\u0635\u0627\u0644\u060c \u0627\u0644\u062a\u0627\u0631\u064a\u062e \u0648\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062a\u062c\u0627\u0631\u064a\u0629." }, modules: [
+  { id: "crm", logo: "/logos/sir-crm-client-logo.png", color: "#d97706", gradient: "linear-gradient(135deg, #d97706, #f59e0b)", colorLight: "#fffbeb", url: "https://crm-app-ne4w.onrender.com", creds: { phone: "22222222", pass: "2222", label: "PIN" }, fr: { name: "CRM Client", desc: "Relation client, suivi des contacts, historique des interactions et gestion commerciale." }, ar: { name: "\u0639\u0644\u0627\u0642\u0627\u062a \u0627\u0644\u0639\u0645\u0644\u0627\u0621", desc: "\u062a\u062a\u0628\u0639 \u0627\u0644\u0639\u0645\u0644\u0627\u0621\u060c \u062c\u0647\u0627\u062a \u0627\u0644\u0627\u062a\u0635\u0627\u0644\u060c \u0627\u0644\u062a\u0627\u0631\u064a\u062e \u0648\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062a\u062c\u0627\u0631\u064a\u0629." }, modules: [
     { fr: "Contacts", ar: "\u062c\u0647\u0627\u062a \u0627\u0644\u0627\u062a\u0635\u0627\u0644", icon: I.phone }, { fr: "Clients", ar: "\u0627\u0644\u0639\u0645\u0644\u0627\u0621", icon: I.users }, { fr: "Opportunites", ar: "\u0627\u0644\u0641\u0631\u0635", icon: I.trending }, { fr: "Suivi commercial", ar: "\u0627\u0644\u0645\u062a\u0627\u0628\u0639\u0629 \u0627\u0644\u062a\u062c\u0627\u0631\u064a\u0629", icon: I.briefcase }, { fr: "Rapports", ar: "\u0627\u0644\u062a\u0642\u0627\u0631\u064a\u0631", icon: I.pie }, { fr: "Parametres", ar: "\u0627\u0644\u0625\u0639\u062f\u0627\u062f\u0627\u062a", icon: I.settings }
   ]},
-  { id: "accounting", logo: "/logos/sir-comptabilite-logo.png", color: "#7c3aed", gradient: "linear-gradient(135deg, #7c3aed, #8b5cf6)", colorLight: "#f5f3ff", url: "https://accounting-app.onrender.com", fr: { name: "Comptabilite", desc: "Gestion comptable, facturation clients, suivi des paiements et bilans financiers." }, ar: { name: "\u0627\u0644\u0645\u062d\u0627\u0633\u0628\u0627\u062a", desc: "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0645\u062d\u0627\u0633\u0628\u064a\u0629\u060c \u0641\u0648\u0627\u062a\u064a\u0631 \u0627\u0644\u0639\u0645\u0644\u0627\u0621\u060c \u0645\u062a\u0627\u0628\u0639\u0629 \u0627\u0644\u0645\u062f\u0641\u0648\u0639\u0627\u062a." }, modules: [
+  { id: "accounting", logo: "/logos/sir-comptabilite-logo.png", color: "#7c3aed", gradient: "linear-gradient(135deg, #7c3aed, #8b5cf6)", colorLight: "#f5f3ff", url: "https://accounting-app.onrender.com", creds: { phone: "22222222", pass: "2222", label: "PIN" }, fr: { name: "Comptabilite", desc: "Gestion comptable, facturation clients, suivi des paiements et bilans financiers." }, ar: { name: "\u0627\u0644\u0645\u062d\u0627\u0633\u0628\u0627\u062a", desc: "\u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0645\u062d\u0627\u0633\u0628\u064a\u0629\u060c \u0641\u0648\u0627\u062a\u064a\u0631 \u0627\u0644\u0639\u0645\u0644\u0627\u0621\u060c \u0645\u062a\u0627\u0628\u0639\u0629 \u0627\u0644\u0645\u062f\u0641\u0648\u0639\u0627\u062a." }, modules: [
     { fr: "Tableau de bord", ar: "\u0644\u0648\u062d\u0629 \u0627\u0644\u062a\u062d\u0643\u0645", icon: I.dashboard }, { fr: "Factures", ar: "\u0627\u0644\u0641\u0648\u0627\u062a\u064a\u0631", icon: I.file }, { fr: "Clients", ar: "\u0627\u0644\u0639\u0645\u0644\u0627\u0621", icon: I.users }, { fr: "Produits", ar: "\u0627\u0644\u0645\u0646\u062a\u062c\u0627\u062a", icon: I.package }, { fr: "Paiements", ar: "\u0627\u0644\u0645\u062f\u0641\u0648\u0639\u0627\u062a", icon: I.dollar }, { fr: "Rapports", ar: "\u0627\u0644\u062a\u0642\u0627\u0631\u064a\u0631", icon: I.barChart }, { fr: "Parametres", ar: "\u0627\u0644\u0625\u0639\u062f\u0627\u062f\u0627\u062a", icon: I.settings }
   ]},
-  { id: "boutique", logo: "/logos/sir-boutique-souq-logo.png", color: "#e11d48", gradient: "linear-gradient(135deg, #e11d48, #f43f5e)", colorLight: "#fff1f2", url: "https://boutique-psi-hazel.vercel.app", fr: { name: "Boutique SOUQ", desc: "Gestion de boutique : produits, commandes, clients et suivi des ventes." }, ar: { name: "\u0645\u062a\u062c\u0631 \u0633\u0648\u0642", desc: "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0645\u062a\u062c\u0631: \u0627\u0644\u0645\u0646\u062a\u062c\u0627\u062a\u060c \u0627\u0644\u0637\u0644\u0628\u0627\u062a\u060c \u0627\u0644\u0639\u0645\u0644\u0627\u0621 \u0648\u0645\u062a\u0627\u0628\u0639\u0629 \u0627\u0644\u0645\u0628\u064a\u0639\u0627\u062a." }, modules: [
+  { id: "boutique", logo: "/logos/sir-boutique-souq-logo.png", color: "#e11d48", gradient: "linear-gradient(135deg, #e11d48, #f43f5e)", colorLight: "#fff1f2", url: "https://boutique-psi-hazel.vercel.app", creds: { phone: "43227748", pass: "1234", label: "PIN" }, fr: { name: "Boutique SOUQ", desc: "Gestion de boutique : produits, commandes, clients et suivi des ventes." }, ar: { name: "\u0645\u062a\u062c\u0631 \u0633\u0648\u0642", desc: "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0645\u062a\u062c\u0631: \u0627\u0644\u0645\u0646\u062a\u062c\u0627\u062a\u060c \u0627\u0644\u0637\u0644\u0628\u0627\u062a\u060c \u0627\u0644\u0639\u0645\u0644\u0627\u0621 \u0648\u0645\u062a\u0627\u0628\u0639\u0629 \u0627\u0644\u0645\u0628\u064a\u0639\u0627\u062a." }, modules: [
     { fr: "Produits", ar: "\u0627\u0644\u0645\u0646\u062a\u062c\u0627\u062a", icon: I.package }, { fr: "Commandes", ar: "\u0627\u0644\u0637\u0644\u0628\u0627\u062a", icon: I.cart }, { fr: "Clients", ar: "\u0627\u0644\u0639\u0645\u0644\u0627\u0621", icon: I.users }, { fr: "Ventes", ar: "\u0627\u0644\u0645\u0628\u064a\u0639\u0627\u062a", icon: I.trending }, { fr: "Stocks", ar: "\u0627\u0644\u0645\u062e\u0632\u0648\u0646", icon: I.warehouse }, { fr: "Parametres", ar: "\u0627\u0644\u0625\u0639\u062f\u0627\u062f\u0627\u062a", icon: I.settings }
   ]},
-  { id: "flotte", logo: "/logos/sir-gestion-de-flotte-logo.png", color: "#0891b2", gradient: "linear-gradient(135deg, #0891b2, #06b6d4)", colorLight: "#ecfeff", url: "https://flotte-1jgltrhkk-sir17.vercel.app", fr: { name: "Gestion de Flotte", desc: "Gestion de flotte vehicules : conducteurs, maintenance, carburant et affectations." }, ar: { name: "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0623\u0633\u0637\u0648\u0644", desc: "\u0625\u062f\u0627\u0631\u0629 \u0623\u0633\u0637\u0648\u0644 \u0627\u0644\u0645\u0631\u0643\u0628\u0627\u062a: \u0627\u0644\u0633\u0627\u0626\u0642\u0648\u0646\u060c \u0627\u0644\u0635\u064a\u0627\u0646\u0629\u060c \u0627\u0644\u0648\u0642\u0648\u062f." }, modules: [
+  { id: "flotte", logo: "/logos/sir-gestion-de-flotte-logo.png", color: "#0891b2", gradient: "linear-gradient(135deg, #0891b2, #06b6d4)", colorLight: "#ecfeff", url: "https://flotte-1jgltrhkk-sir17.vercel.app", creds: { phone: "43227748", pass: "1234", label: "PIN" }, fr: { name: "Gestion de Flotte", desc: "Gestion de flotte vehicules : conducteurs, maintenance, carburant et affectations." }, ar: { name: "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0623\u0633\u0637\u0648\u0644", desc: "\u0625\u062f\u0627\u0631\u0629 \u0623\u0633\u0637\u0648\u0644 \u0627\u0644\u0645\u0631\u0643\u0628\u0627\u062a: \u0627\u0644\u0633\u0627\u0626\u0642\u0648\u0646\u060c \u0627\u0644\u0635\u064a\u0627\u0646\u0629\u060c \u0627\u0644\u0648\u0642\u0648\u062f." }, modules: [
     { fr: "Vehicules", ar: "\u0627\u0644\u0645\u0631\u0643\u0628\u0627\u062a", icon: I.car }, { fr: "Conducteurs", ar: "\u0627\u0644\u0633\u0627\u0626\u0642\u0648\u0646", icon: I.users }, { fr: "Maintenance", ar: "\u0627\u0644\u0635\u064a\u0627\u0646\u0629", icon: I.settings }, { fr: "Carburant", ar: "\u0627\u0644\u0648\u0642\u0648\u062f", icon: I.wallet }, { fr: "Affectations", ar: "\u0627\u0644\u062a\u062e\u0635\u064a\u0635\u0627\u062a", icon: I.clipboard }, { fr: "Rapports", ar: "\u0627\u0644\u062a\u0642\u0627\u0631\u064a\u0631", icon: I.barChart }
   ]},
-  { id: "clinique", logo: "/logos/sir-cliniq-os-logo.png", color: "#16a34a", gradient: "linear-gradient(135deg, #16a34a, #22c55e)", colorLight: "#f0fdf4", url: "https://sir-psi.vercel.app", fr: { name: "CLINIQ.OS", desc: "Gestion de clinique : patients, medecins, rendez-vous, consultations et dossier medical." }, ar: { name: "\u0643\u0644\u064a\u0646\u064a\u0643", desc: "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u064a\u0627\u062f\u0629: \u0627\u0644\u0645\u0631\u0636\u0649\u060c \u0627\u0644\u0623\u0637\u0628\u0627\u0621\u060c \u0627\u0644\u0645\u0648\u0639\u064a\u062f\u060c \u0627\u0644\u0627\u0633\u062a\u0634\u0627\u0631\u0627\u062a \u0648\u0627\u0644\u0645\u0644\u0641\u0627\u062a." }, modules: [
+  { id: "clinique", logo: "/logos/sir-cliniq-os-logo.png", color: "#16a34a", gradient: "linear-gradient(135deg, #16a34a, #22c55e)", colorLight: "#f0fdf4", url: "https://sir-psi.vercel.app", creds: { phone: "+222000000001", pass: "sir2026", label: "Mot de passe" }, fr: { name: "CLINIQ.OS", desc: "Gestion de clinique : patients, medecins, rendez-vous, consultations et dossier medical." }, ar: { name: "\u0643\u0644\u064a\u0646\u064a\u0643", desc: "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0639\u064a\u0627\u062f\u0629: \u0627\u0644\u0645\u0631\u0636\u0649\u060c \u0627\u0644\u0623\u0637\u0628\u0627\u0621\u060c \u0627\u0644\u0645\u0648\u0639\u064a\u062f\u060c \u0627\u0644\u0627\u0633\u062a\u0634\u0627\u0631\u0627\u062a \u0648\u0627\u0644\u0645\u0644\u0641\u0627\u062a." }, modules: [
     { fr: "Patients", ar: "\u0627\u0644\u0645\u0631\u0636\u0649", icon: I.heart }, { fr: "Medecins", ar: "\u0627\u0644\u0623\u0637\u0628\u0627\u0621", icon: I.stethoscope }, { fr: "Rendez-vous", ar: "\u0627\u0644\u0645\u0648\u0639\u064a\u062f", icon: I.calendar }, { fr: "Consultations", ar: "\u0627\u0644\u0627\u0633\u062a\u0634\u0627\u0631\u0627\u062a", icon: I.activity }, { fr: "Dossiers medicaux", ar: "\u0627\u0644\u0645\u0644\u0641\u0627\u062a \u0627\u0644\u0637\u0628\u064a\u0629", icon: I.file }, { fr: "Secretariat", ar: "\u0627\u0644\u0643\u062a\u0627\u0628\u0629", icon: I.userPlus }, { fr: "Parametres", ar: "\u0627\u0644\u0625\u0639\u062f\u0627\u062f\u0627\u062a", icon: I.settings }
   ]},
 ];
 
-const labelFr = { badge: "Plateforme integree", section: "Applications disponibles", open: "Ouvrir", footer: "SIR APPS 2026", stats: ["Applications", "Modules", "Disponible"], back: "Retour", launch: "Lancer l'application", modules: "modules", search: "Rechercher...", all: "Toutes les apps" };
-const labelAr = { badge: "\u0645\u0646\u0635\u0629 \u0645\u062a\u0643\u0627\u0645\u0644\u0629", section: "\u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0627\u0644\u0645\u062a\u0627\u062d\u0629", open: "\u0641\u062a\u062d", footer: "\u0633\u064a\u0631 \u0622\u0628\u0633 2026", stats: ["\u062a\u0637\u0628\u064a\u0642", "\u0648\u062d\u062f\u0627\u062a", "\u0645\u062a\u0648\u0641\u0631"], back: "\u0631\u062c\u0648\u0639", launch: "\u0634\u063a\u0644 \u0627\u0644\u062a\u0637\u0628\u064a\u0642", modules: "\u0648\u062d\u062f\u0627\u062a", search: "\u0628\u062d\u062b...", all: "\u062c\u0645\u064a\u0639 \u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a" };
-
 const WA = "https://wa.me/22236445523";
 
-function DetailView({ app, lang, L, onBack }) {
+const welcomeFr = { greeting: "Bonjour", welcome: "sur", brand: "SIR APPS", desc: "Toutes vos applications de gestion developpees par", company: "SIR SOLUTIONS INFORMATIQUES RAPIDES", sub: "La plateforme de gestion integree pour toutes vos activites professionnelles.", continue: "Continuer" };
+const welcomeAr = { greeting: "\u0645\u0631\u062d\u0628\u064b\u0627", welcome: "\u0639\u0644\u0649", brand: "SIR APPS", desc: "\u062c\u0645\u064a\u0639 \u062a\u0637\u0628\u064a\u0642\u0627\u062a \u0627\u0644\u0625\u062f\u0627\u0631\u0629 \u0645\u0646\u0637\u0642\u0629 \u0645\u0637\u0648\u0631\u0629 \u0645\u0646 \u0642\u0628\u0644 \u0628\u064a\u0646", company: "SIR SOLUTIONS INFORMATIQUES RAPIDES", sub: "\u0627\u0644\u0645\u0646\u0635\u0629 \u0627\u0644\u0645\u062a\u0643\u0627\u0645\u0644\u0629 \u0644\u062c\u0645\u064a\u0639 \u0623\u0646\u0634\u0627\u0621\u0643 \u0627\u0644\u0645\u0647\u0646\u064a\u0629.", continue: "\u0645\u062a\u0627\u0628\u0639\u0629" };
+
+const pricingFr = { title: "Abonnez-vous", subtitle: "Acces complet a toutes les applications", monthly: "Mensuel", monthlyPrice: "1 500 MRU", monthlyPeriod: "/mois", monthlyDesc: "Acces complet pendant 30 jours", lifetime: "A vie", lifetimePrice: "60 000 MRU", lifetimeDesc: "Acces a vie, pas de renouvellement", tryFree: "Essayer gratuitement", subscribe: "S'abonner", payTitle: "Paiement Bankily", transfer: "Transferez le montant a :", number: "36 44 55 23", confirm: "Confirmer sur WhatsApp", back: "Retour", howTo: "Comment payer :", step1: "1. Ouvrez Bankily sur votre telephone", step2: "2. Effectuez le transfert au numero ci-dessus", step3: "3. Confirmez sur WhatsApp avec la preuve", chosen: "Vous avez choisi :", copy: "Copier", copied: "Copie !" };
+const pricingAr = { title: "\u0627\u0634\u062a\u0631\u0643", subtitle: "\u0648\u0635\u0644 \u0643\u0627\u0645\u0644 \u0625\u0644\u0649 \u062c\u0645\u064a\u0639 \u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a", monthly: "\u0634\u0647\u0631\u064a", monthlyPrice: "1 500 \u0645\u0631\u0648", monthlyPeriod: "/\u0634\u0647\u0631", monthlyDesc: "\u0648\u0635\u0644 \u0643\u0627\u0645\u0644 \u0644\u0634\u0647\u0631 30 \u064a\u0648\u0645", lifetime: "\u0625\u0644\u0649 \u0627\u0644\u0623\u0628\u0627\u062f", lifetimePrice: "60 000 \u0645\u0631\u0648", lifetimeDesc: "\u0648\u0635\u0644 \u0645\u0639\u062f \u0627\u0644\u062d\u064a\u0627\u0629\u060c \u0628\u062f\u0648\u0646 \u062a\u062c\u062f\u064a\u062f", tryFree: "\u062a\u062c\u0631\u0628 \u0645\u062c\u0627\u0646\u064a\u0627\u064b", subscribe: "\u0627\u0634\u062a\u0631\u0643", payTitle: "\u0627\u0644\u062f\u0641\u0639 \u0628\u0627\u0646\u0643\u064a\u0644\u064a", transfer: "\u062a\u062d\u0648\u064a\u0644 \u0627\u0644\u0645\u0628\u0644\u063a \u0625\u0644\u0649 :", number: "36 44 55 23", confirm: "\u062a\u0623\u0643\u064a\u062f \u0639\u0644\u0649 WhatsApp", back: "\u0631\u062c\u0648\u0639", howTo: "\u0643\u064a\u0641 \u062a\u062f\u0641\u0639 :", step1: "1. \u0627\u0641\u062a\u062d Bankily \u0639\u0644\u0649 \u062a\u0644\u0641\u0648\u0646\u0643", step2: "2. \u062a\u062d\u0648\u064a\u0644 \u0627\u0644\u0645\u0628\u0644\u063a \u0644\u0644\u0631\u0642\u0645 \u0627\u0644\u0623\u0639\u0644\u0627\u0645 \u0623\u0639\u0644\u0627", step3: "3. \u062a\u0623\u0643\u064a\u062f \u0639\u0644\u0649 WhatsApp \u0645\u0639 \u0627\u0644\u0625\u064a\u062a\u0627\u0645\u0629", chosen: "\u0627\u0644\u062e\u064a\u0627\u0631 \u0627\u0644\u0645\u062d\u062f\u062f :", copy: "\u0646\u0633\u062e", copied: "\u0646\u0633\u062e!" };
+
+const credFr = { title: "Identifiants de connexion", subtitle: "Utilisez ces identifiants pour vous connecter a", phone: "Telephone", pin: "Code PIN", password: "Mot de passe", show: "Afficher", hide: "Masquer", copied: "Copie !", copy: "Copier", duration: "Duree : 30 jours avec essai gratuit", goBack: "Retour" };
+const credAr = { title: "\u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0627\u0644\u0633\u0631\u064a\u0639\u0629", subtitle: "\u0627\u0633\u062a\u062e\u062f\u0645 \u0647\u0630\u0647 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0644\u0644\u062f\u062e\u0648\u0644 \u0625\u0644\u0649", phone: "\u0627\u0644\u0647\u0627\u062a\u0641", pin: "\u0631\u0642\u0645 \u0627\u0644\u0645\u0639\u0631\u0641", password: "\u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631", show: "\u0639\u0631\u0636", hide: "\u0625\u062e\u0641\u0627\u0621", copied: "\u0646\u0633\u062e!", copy: "\u0646\u0633\u062e", duration: "\u0627\u0644\u0645\u062f\u0629: 30 \u064a\u0648\u0645 \u0645\u0639 \u062a\u062c\u0631\u064a\u0628 \u0645\u062c\u0627\u0646\u064a", goBack: "\u0631\u062c\u0648\u0639" };
+
+function CopyBtn({ text, label, copiedLabel, color }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = () => { navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 1500); };
+  return (
+    <button onClick={handleCopy} style={{display:"inline-flex",alignItems:"center",gap:4,padding:"4px 10px",borderRadius:7,border:`1px solid ${color || "#e5e7eb"}`,background:copied ? "#f0fdf4" : "white",color:copied ? "#16a34a" : (color || "#374151"),fontSize:".68rem",fontWeight:600,cursor:"pointer",transition:"all .2s"}}>
+      {copied ? I.checkCircle("#16a34a") : (I.copy(color || "#6b7280"))}
+      {copied ? (copiedLabel || "Copie !") : (label || "Copier")}
+    </button>
+  );
+}
+
+function CredentialsPage({ app, lang, onBack }) {
+  const isAr = lang === "ar";
+  const L = isAr ? credAr : credFr;
+  const [showPass, setShowPass] = useState(false);
+  const c = app.creds;
+  const maskedPass = showPass ? c.pass : "\u2022".repeat(c.pass.length);
+  const isPassword = c.label === "Mot de passe";
+
+  return (
+    <div className="cred-page" style={{minHeight:"100vh",background:"#f5f6fa",animation:"fadeIn .3s ease"}}>
+      <div style={{background:app.gradient,padding:"28px 16px 48px",color:"white",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",top:-60,right:-60,width:200,height:200,borderRadius:"50%",background:"rgba(255,255,255,0.08)"}}/>
+        <div style={{position:"absolute",bottom:-40,left:-40,width:150,height:150,borderRadius:"50%",background:"rgba(255,255,255,0.05)"}}/>
+        <div style={{maxWidth:420,margin:"0 auto",position:"relative",zIndex:1}}>
+          <button onClick={onBack} className="cred-back-btn">{I.chevronRight("white")} {L.goBack}</button>
+          <div style={{textAlign:"center",marginTop:12}}>
+            <div style={{width:60,height:60,borderRadius:16,background:"white",display:"inline-flex",alignItems:"center",justifyContent:"center",marginBottom:12,overflow:"hidden"}}>
+              <img src={app.logo} alt="" style={{width:"100%",height:"100%",objectFit:"contain"}} />
+            </div>
+            <div style={{fontSize:".65rem",opacity:.7,marginBottom:2}}>{L.title}</div>
+            <div style={{fontSize:".85rem",fontWeight:700}}>{L.subtitle}</div>
+          </div>
+        </div>
+      </div>
+
+      <div style={{maxWidth:420,margin:"0 auto",padding:"20px 16px 60px"}}>
+        <div style={{background:"white",borderRadius:16,padding:20,border:"1px solid #e5e7eb",boxShadow:"0 2px 12px -2px rgba(0,0,0,0.06)"}}>
+          <div className="cred-row">
+            <div className="cred-label">{I.phone(app.color)} {L.phone}</div>
+            <div className="cred-value-box">
+              <span className="cred-value">{c.phone}</span>
+              <CopyBtn text={c.phone} label={L.copy} copiedLabel={L.copied} color={app.color} />
+            </div>
+          </div>
+
+          <div className="cred-row">
+            <div className="cred-label">{I.shield(app.color)} {isPassword ? L.password : L.pin}</div>
+            <div className="cred-value-box">
+              <span className="cred-value" style={{letterSpacing:showPass ? 0 : 3,fontFamily:showPass ? "inherit" : "monospace"}}>{maskedPass}</span>
+              <button onClick={() => setShowPass(!showPass)} className="cred-eye-btn" style={{color:app.color}}>
+                {showPass ? I.eyeOff("currentColor") : I.eye("currentColor")}
+              </button>
+              <CopyBtn text={c.pass} label={L.copy} copiedLabel={L.copied} color={app.color} />
+            </div>
+          </div>
+        </div>
+
+        <div style={{marginTop:14,padding:"10px 14px",background:"#f0fdf4",borderRadius:11,display:"flex",alignItems:"center",gap:8}}>
+          {I.checkCircle("#16a34a")}
+          <span style={{fontSize:".72rem",color:"#374151",fontWeight:500}}>{L.duration}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function WelcomePage({ lang, onContinue }) {
+  const isAr = lang === "ar";
+  const L = isAr ? welcomeAr : welcomeFr;
+  return (
+    <div className="welcome-page">
+      <div className="welcome-bg-shape welcome-shape1" />
+      <div className="welcome-bg-shape welcome-shape2" />
+      <div className="welcome-content">
+        <img src="/sir-logo.png" alt="SIR" className="welcome-logo" />
+        <div className="welcome-greeting">{L.greeting}</div>
+        <div className="welcome-on">{L.welcome} <span className="welcome-brand">{L.brand}</span></div>
+        <div className="welcome-desc">{L.desc}</div>
+        <div className="welcome-company">{L.company}</div>
+        <div className="welcome-sub">{L.sub}</div>
+        <button className="welcome-btn" onClick={onContinue}>
+          {L.continue} {I.chevronRight("white")}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function PricingPage({ lang, onFree, onSubscribe, onBack }) {
+  const isAr = lang === "ar";
+  const L = isAr ? pricingAr : pricingFr;
+  const [plan, setPlan] = useState(null);
+
+  const handleConfirm = () => {
+    const msg = isAr
+      ? `\u062a\u0631\u063a\u0628 \u0627\u0634\u062a\u0631\u0627\u0643 \u0641\u064a SIR APPS\n\u0627\u0644\u062e\u0637\u0629: ${plan === "monthly" ? "1500 MRU/mois" : "60000 MRU \u0625\u0644\u0649 \u0627\u0644\u0623\u0628\u0627\u062f"}\n\u0637\u0631\u064a\u0642 \u0627\u0644\u062f\u0641\u0639: Bankily\n\u0631\u0642\u0645 \u0627\u0644\u062a\u062d\u0648\u064a\u0644: 36445523`
+      : `Je souhaite souscrire a SIR APPS\nForfait: ${plan === "monthly" ? "1500 MRU/mois" : "60000 MRU a vie"}\nMode de paiement: Bankily\nNumero de transfert: 36445523`;
+    window.open(`https://wa.me/22236445523?text=${encodeURIComponent(msg)}`, "_blank");
+    onSubscribe();
+  };
+
+  if (plan) {
+    return (
+      <div className="pricing-page">
+        <button className="pricing-back" onClick={() => setPlan(null)}>{I.chevronRight("#6366f1")} {L.back}</button>
+        <div className="pricing-pay-card">
+          <div style={{fontSize:".72rem",color:"#9ca3af",marginBottom:4}}>{L.chosen}</div>
+          <div style={{fontSize:"1.1rem",fontWeight:700,color:"#111827",marginBottom:16}}>
+            {plan === "monthly" ? `${L.monthly} - ${L.monthlyPrice}` : `${L.lifetime} - ${L.lifetimePrice}`}
+          </div>
+          <div style={{fontSize:".8rem",fontWeight:700,color:"#111827",marginBottom:10}}>{L.payTitle}</div>
+          <div className="pricing-bankily-box">
+            <img src="/logo-bankily.png" alt="Bankily" style={{width:36,height:36,borderRadius:8,objectFit:"contain"}} />
+            <div style={{flex:1}}>
+              <div style={{fontSize:".68rem",color:"#6b7280"}}>{L.transfer}</div>
+              <div style={{display:"flex",alignItems:"center",gap:8}}>
+                <span className="pricing-number">{L.number}</span>
+                <CopyBtn text="36445523" label={L.copy} copiedLabel={L.copied} color="#059669" />
+              </div>
+            </div>
+          </div>
+          <div style={{fontSize:".72rem",fontWeight:600,color:"#374151",marginBottom:8}}>{L.howTo}</div>
+          <div style={{fontSize:".7rem",color:"#6b7280",lineHeight:1.8,marginBottom:20}}>
+            <div>{L.step1}</div>
+            <div>{L.step2}</div>
+            <div>{L.step3}</div>
+          </div>
+          <button className="pricing-btn-wa" onClick={handleConfirm}>
+            <svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            {L.confirm}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="pricing-page">
+      <button className="pricing-back" onClick={onBack}>{I.chevronRight("#6366f1")} {L.back}</button>
+      <div className="pricing-header">
+        <img src="/sir-logo.png" alt="SIR" style={{width:90,objectFit:"contain",marginBottom:8,filter:"drop-shadow(0 4px 12px rgba(0,0,0,0.15))"}} />
+        <h1>{L.title}</h1>
+        <p>{L.subtitle}</p>
+      </div>
+      <div className="pricing-cards">
+        <div className="pricing-card" onClick={() => setPlan("monthly")}>
+          <div className="pricing-badge">Populaire</div>
+          <div className="pricing-plan-name">{L.monthly}</div>
+          <div className="pricing-price">{L.monthlyPrice}<span>{L.monthlyPeriod}</span></div>
+          <div className="pricing-desc">{L.monthlyDesc}</div>
+          <div className="pricing-btn">{L.subscribe}</div>
+        </div>
+        <div className="pricing-card pricing-card-best" onClick={() => setPlan("lifetime")}>
+          <div className="pricing-badge pricing-badge-best">{isAr ? "\u0623\u0641\u0636\u0644" : "Meilleur"}</div>
+          <div className="pricing-plan-name">{L.lifetime}</div>
+          <div className="pricing-price">{L.lifetimePrice}</div>
+          <div className="pricing-desc">{L.lifetimeDesc}</div>
+          <div className="pricing-btn pricing-btn-best">{L.subscribe}</div>
+        </div>
+      </div>
+      <button className="pricing-try" onClick={onFree}>{L.tryFree}</button>
+    </div>
+  );
+}
+
+function DetailView({ app, lang, L, onBack, onCreds }) {
   const isAr = lang === "ar";
   const info = isAr ? app.ar : app.fr;
   return (
@@ -78,8 +255,8 @@ function DetailView({ app, lang, L, onBack }) {
         <div style={{position:"absolute",top:-60,right:-60,width:200,height:200,borderRadius:"50%",background:"rgba(255,255,255,0.08)"}}/>
         <div style={{position:"absolute",bottom:-40,left:-40,width:150,height:150,borderRadius:"50%",background:"rgba(255,255,255,0.05)"}}/>
         <div style={{maxWidth:600,margin:"0 auto",position:"relative",zIndex:1}}>
-          <button onClick={onBack} style={{background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.2)",borderRadius:10,padding:"7px 14px",color:"white",fontSize:".78rem",fontWeight:600,cursor:"pointer",display:"inline-flex",alignItems:"center",gap:6,marginBottom:20}}>
-            {I.arrowLeft("white")} {L.back}
+          <button onClick={onBack} className="detail-back-btn">
+            {I.chevronRight("white")} {L.back}
           </button>
           <div style={{display:"flex",alignItems:"center",gap:16,marginBottom:16}}>
             <div style={{width:64,height:64,borderRadius:16,background:"white",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,overflow:"hidden"}}>
@@ -107,21 +284,22 @@ function DetailView({ app, lang, L, onBack }) {
             </div>
           ))}
         </div>
+
+        <button onClick={() => onCreds(app)} style={{width:"100%",marginTop:16,padding:"14px",borderRadius:12,border:`2px solid ${app.color}`,background:"white",color:app.color,fontSize:".85rem",fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",gap:8}}>
+          {I.shield(app.color)} {isAr ? "\u0639\u0631\u0636 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a" : "Voir les identifiants"}
+        </button>
       </div>
     </div>
   );
 }
 
 function SearchBar({ onSearch, L }) {
-  const [open, setOpen] = useState(false);
   const [val, setVal] = useState("");
-  const ref = useRef(null);
-  useEffect(() => { if (open && ref.current) ref.current.focus(); }, [open]);
   return (
     <div style={{display:"flex",justifyContent:"center",margin:"14px 14px 0"}}>
       <div style={{width:"100%",maxWidth:500,position:"relative",display:"flex",alignItems:"center"}}>
         <div style={{position:"absolute",left:10,top:"50%",transform:"translateY(-50%)",width:16,height:16,pointerEvents:"none"}}>{I.search("#9ca3af")}</div>
-        <input ref={ref} value={val} onChange={(e) => {setVal(e.target.value); onSearch(e.target.value)}} placeholder={L.search} style={{width:"100%",padding:"9px 30px 9px 32px",borderRadius:10,border:"1px solid #e5e7eb",background:"white",fontSize:".8rem",outline:"none",fontFamily:"inherit",color:"#374151"}} />
+        <input value={val} onChange={(e) => {setVal(e.target.value); onSearch(e.target.value)}} placeholder={L.search} style={{width:"100%",padding:"9px 30px 9px 32px",borderRadius:10,border:"1px solid #e5e7eb",background:"white",fontSize:".8rem",outline:"none",fontFamily:"inherit",color:"#374151"}} />
         {val && <button onClick={() => {setVal("");onSearch("")}} style={{position:"absolute",right:8,top:"50%",transform:"translateY(-50%)",background:"none",border:"none",fontSize:".75rem",color:"#9ca3af",cursor:"pointer",padding:"2px 4px"}}>X</button>}
       </div>
     </div>
@@ -136,121 +314,14 @@ function WhatsAppButton({ showAnim }) {
   );
 }
 
-
-const pricingFr = {
-  title: "Abonnez-vous",
-  subtitle: "Acces complet a toutes les applications",
-  monthly: "Mensuel", monthlyPrice: "1 500 MRU", monthlyPeriod: "/mois", monthlyDesc: "Acces complet pendant 30 jours",
-  lifetime: "A vie", lifetimePrice: "60 000 MRU", lifetimeDesc: "Acces a vie, pas de renouvellement",
-  tryFree: "Essayer gratuitement",
-  subscribe: "S'abonner",
-  payTitle: "Paiement Bankily",
-  transfer: "Transferez le montant a :",
-  number: "36 44 55 23",
-  confirm: "Confirmer sur WhatsApp",
-  back: "Retour",
-  howTo: "Comment payer :",
-  step1: "1. Ouvrez Bankily sur votre telephone",
-  step2: "2. Effectuez le transfert au numero ci-dessus",
-  step3: "3. Confirmez sur WhatsApp avec la preuve",
-  chosen: "Vous avez choisi :",
-};
-
-const pricingAr = {
-  title: "\u0627\u0634\u062a\u0631\u0643",
-  subtitle: "\u0648\u0635\u0644 \u0643\u0627\u0645\u0644 \u0625\u0644\u0649 \u062c\u0645\u064a\u0639 \u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a",
-  monthly: "\u0634\u0647\u0631\u064a", monthlyPrice: "1 500 \u0645\u0631\u0648", monthlyPeriod: "/\u0634\u0647\u0631", monthlyDesc: "\u0648\u0635\u0644 \u0643\u0627\u0645\u0644 \u0644\u0634\u0647\u0631 30 \u064a\u0648\u0645",
-  lifetime: "\u0625\u0644\u0649 \u0627\u0644\u0623\u0628\u0627\u062f", lifetimePrice: "60 000 \u0645\u0631\u0648", lifetimeDesc: "\u0648\u0635\u0644 \u0645\u0639\u062f \u0627\u0644\u062d\u064a\u0627\u0629\u060c \u0628\u062f\u0648\u0646 \u062a\u062c\u062f\u064a\u062f",
-  tryFree: "\u062a\u062c\u0631\u0628 \u0645\u062c\u0627\u0646\u064a\u0627\u064b",
-  subscribe: "\u0627\u0634\u062a\u0631\u0643",
-  payTitle: "\u0627\u0644\u062f\u0641\u0639 \u0628\u0627\u0646\u0643\u064a\u0644\u064a",
-  transfer: "\u062a\u062d\u0648\u064a\u0644 \u0627\u0644\u0645\u0628\u0644\u063a \u0625\u0644\u0649 :",
-  number: "36 44 55 23",
-  confirm: "\u062a\u0623\u0643\u064a\u062f \u0639\u0644\u0649 WhatsApp",
-  back: "\u0631\u062c\u0648\u0639",
-  howTo: "\u0643\u064a\u0641 \u062a\u062f\u0641\u0639 :",
-  step1: "1. \u0627\u0641\u062a\u062d Bankily \u0639\u0644\u0649 \u062a\u0644\u0641\u0648\u0646\u0643",
-  step2: "2. \u062a\u062d\u0648\u064a\u0644 \u0627\u0644\u0645\u0628\u0644\u063a \u0644\u0644\u0631\u0642\u0645 \u0627\u0644\u0623\u0639\u0644\u0627\u0645 \u0623\u0639\u0644\u0627",
-  step3: "3. \u062a\u0623\u0643\u064a\u062f \u0639\u0644\u0649 WhatsApp \u0645\u0639 \u0627\u0644\u0625\u064a\u062a\u0627\u0645\u0629",
-  chosen: "\u0627\u0644\u062e\u064a\u0627\u0631 \u0627\u0644\u0645\u062d\u062f\u062f :",
-};
-
-function PricingPage({ lang, onFree, onSubscribe }) {
-  const isAr = lang === "ar";
-  const L = isAr ? pricingAr : pricingFr;
-  const [plan, setPlan] = useState(null);
-
-  const handleConfirm = () => {
-    const msg = isAr
-      ? `\u062a\u0631\u063a\u0628 \u0627\u0634\u062a\u0631\u0627\u0643 \u0641\u064a SIR APPS\n\u0627\u0644\u062e\u0637\u0629: ${plan === "monthly" ? "1500 MRU/mois" : "60000 MRU \u0625\u0644\u0649 \u0627\u0644\u0623\u0628\u0627\u062f"}\n\u0637\u0631\u064a\u0642 \u0627\u0644\u062f\u0641\u0639: Bankily\n\u0631\u0642\u0645 \u0627\u0644\u062a\u062d\u0648\u064a\u0644: 36445523`
-      : `Je souhaite souscrire a SIR APPS\nForfait: ${plan === "monthly" ? "1500 MRU/mois" : "60000 MRU a vie"}\nMode de paiement: Bankily\nNumero de transfert: 36445523`;
-    window.open(`https://wa.me/22236445523?text=${encodeURIComponent(msg)}`, "_blank");
-    onSubscribe();
-  };
-
-  if (plan) {
-    return (
-      <div className="pricing-page">
-        <button className="pricing-back" onClick={() => setPlan(null)}>{I.arrowLeft("#6366f1")} {L.back}</button>
-        <div className="pricing-pay-card">
-          <div style={{fontSize:".72rem",color:"#9ca3af",marginBottom:4}}>{L.chosen}</div>
-          <div style={{fontSize:"1.1rem",fontWeight:700,color:"#111827",marginBottom:16}}>
-            {plan === "monthly" ? `${L.monthly} - ${L.monthlyPrice}` : `${L.lifetime} - ${L.lifetimePrice}`}
-          </div>
-          <div style={{fontSize:".8rem",fontWeight:700,color:"#111827",marginBottom:10}}>{L.payTitle}</div>
-          <div style={{display:"flex",alignItems:"center",gap:10,background:"#f0fdf4",borderRadius:12,padding:"12px 14px",marginBottom:16}}>
-            <img src="/logo-bankily.png" alt="Bankily" style={{width:36,height:36,borderRadius:8,objectFit:"contain"}} />
-            <div>
-              <div style={{fontSize:".68rem",color:"#6b7280"}}>{L.transfer}</div>
-              <div style={{fontSize:"1rem",fontWeight:800,color:"#111827",letterSpacing:1}}>{L.number}</div>
-            </div>
-          </div>
-          <div style={{fontSize:".72rem",fontWeight:600,color:"#374151",marginBottom:8}}>{L.howTo}</div>
-          <div style={{fontSize:".7rem",color:"#6b7280",lineHeight:1.8,marginBottom:20}}>
-            <div>{L.step1}</div>
-            <div>{L.step2}</div>
-            <div>{L.step3}</div>
-          </div>
-          <button className="pricing-btn-wa" onClick={handleConfirm}>
-            <svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            {L.confirm}
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="pricing-page">
-      <div className="pricing-header">
-        <img src="/sir-logo.png" alt="SIR" style={{width:100,objectFit:"contain",marginBottom:8,filter:"drop-shadow(0 4px 12px rgba(0,0,0,0.15))"}} />
-        <h1>{L.title}</h1>
-        <p>{L.subtitle}</p>
-      </div>
-      <div className="pricing-cards">
-        <div className="pricing-card" onClick={() => setPlan("monthly")}>
-          <div className="pricing-badge">Populaire</div>
-          <div className="pricing-plan-name">{L.monthly}</div>
-          <div className="pricing-price">{L.monthlyPrice}<span>{L.monthlyPeriod}</span></div>
-          <div className="pricing-desc">{L.monthlyDesc}</div>
-          <div className="pricing-btn">{L.subscribe}</div>
-        </div>
-        <div className="pricing-card pricing-card-best" onClick={() => setPlan("lifetime")}>
-          <div className="pricing-badge pricing-badge-best">{isAr ? "\u0623\u0641\u0636\u0644" : "Meilleur"}</div>
-          <div className="pricing-plan-name">{L.lifetime}</div>
-          <div className="pricing-price">{L.lifetimePrice}</div>
-          <div className="pricing-desc">{L.lifetimeDesc}</div>
-          <div className="pricing-btn pricing-btn-best">{L.subscribe}</div>
-        </div>
-      </div>
-      <button className="pricing-try" onClick={onFree}>{L.tryFree}</button>
-    </div>
-  );
-}
+const labelFr = { badge: "Plateforme integree", footer: "SIR APPS 2026", stats: ["Applications", "Modules", "Disponible"], back: "Retour", launch: "Lancer l'application", modules: "modules", search: "Rechercher...", all: "Toutes les apps" };
+const labelAr = { badge: "\u0645\u0646\u0635\u0629 \u0645\u062a\u0643\u0627\u0645\u0644\u0629", footer: "\u0633\u064a\u0631 \u0622\u0628\u0633 2026", stats: ["\u062a\u0637\u0628\u064a\u0642", "\u0648\u062d\u062f\u0627\u062a", "\u0645\u062a\u0648\u0641\u0631"], back: "\u0631\u062c\u0648\u0639", launch: "\u0634\u063a\u0644 \u0627\u0644\u062a\u0637\u0628\u064a\u0642", modules: "\u0648\u062d\u062f\u0627\u062a", search: "\u0628\u062d\u062b...", all: "\u062c\u0645\u064a\u0639 \u0627\u0644\u062a\u0637\u0628\u064a\u0642\u0627\u062a" };
 
 
 export default function App() {
+  const [page, setPage] = useState("welcome");
   const [detail, setDetail] = useState(null);
+  const [credApp, setCredApp] = useState(null);
   const [lang, setLang] = useState("fr");
   const [filter, setFilter] = useState("");
   const [showWA, setShowWA] = useState(false);
@@ -269,18 +340,13 @@ export default function App() {
     document.documentElement.lang = isAr ? "ar" : "fr";
     document.body.style.fontFamily = isAr ? "'IBM Plex Sans Arabic',sans-serif" : "'Comfortaa',sans-serif";
     const seen = sessionStorage.getItem("sirapps_wa");
-    if (!seen) {
-      setShowWA(true);
-      sessionStorage.setItem("sirapps_wa", "1");
-    }
+    if (!seen) { setShowWA(true); sessionStorage.setItem("sirapps_wa", "1"); }
   }, [isAr]);
 
   const filtered = apps.filter(a => {
     if (!filter) return true;
     const q = filter.toLowerCase();
-    const nfr = a.fr.name.toLowerCase();
-    const nar = a.ar.name.toLowerCase();
-    return nfr.includes(q) || nar.includes(q);
+    return a.fr.name.toLowerCase().includes(q) || a.ar.name.toLowerCase().includes(q);
   });
 
   if (splash) {
@@ -288,9 +354,7 @@ export default function App() {
       <>
         <style>{CSS}</style>
         <div className="splash">
-          <div className="splash-logo">
-            <img src="/sir-logo.png" alt="SIR APPS" className="splash-img" />
-          </div>
+          <div className="splash-logo"><img src="/sir-logo.png" alt="SIR APPS" className="splash-img" /></div>
           <div className="splash-title">SIR APPS</div>
           <div className="splash-sub">Plateforme integree</div>
           <div className="splash-loader"><div className="splash-bar"/></div>
@@ -299,7 +363,20 @@ export default function App() {
     );
   }
 
-  if (!subscribed) {
+  if (page === "welcome") {
+    return (
+      <>
+        <style>{CSS}</style>
+        <div className="lang-toggle">
+          <button className={!isAr ? "active" : ""} onClick={() => setLang("fr")}>FR</button>
+          <button className={isAr ? "active" : ""} onClick={() => setLang("ar")}>AR</button>
+        </div>
+        <WelcomePage lang={lang} onContinue={() => setPage("pricing")} />
+      </>
+    );
+  }
+
+  if (page === "pricing") {
     return (
       <>
         <style>{CSS}</style>
@@ -309,9 +386,19 @@ export default function App() {
         </div>
         <PricingPage
           lang={lang}
-          onFree={() => { setSubscribed(true); sessionStorage.setItem("sirapps_free","1"); }}
-          onSubscribe={() => { localStorage.setItem("sirapps_sub","1"); setSubscribed(true); }}
+          onBack={() => setPage("welcome")}
+          onFree={() => { setSubscribed(true); setPage("main"); sessionStorage.setItem("sirapps_free","1"); }}
+          onSubscribe={() => { localStorage.setItem("sirapps_sub","1"); setSubscribed(true); setPage("main"); }}
         />
+      </>
+    );
+  }
+
+  if (credApp) {
+    return (
+      <>
+        <style>{CSS}</style>
+        <CredentialsPage app={credApp} lang={lang} onBack={() => setCredApp(null)} />
       </>
     );
   }
@@ -320,7 +407,7 @@ export default function App() {
     return (
       <>
         <style>{CSS}</style>
-        <DetailView app={detail} lang={lang} L={L} onBack={() => setDetail(null)} />
+        <DetailView app={detail} lang={lang} L={L} onBack={() => setDetail(null)} onCreds={(a) => { setDetail(null); setCredApp(a); }} />
       </>
     );
   }
@@ -328,7 +415,6 @@ export default function App() {
   return (
     <>
       <style>{CSS}</style>
-
       <div className="lang-toggle">
         <button className={!isAr ? "active" : ""} onClick={() => setLang("fr")}>FR</button>
         <button className={isAr ? "active" : ""} onClick={() => setLang("ar")}>AR</button>
@@ -367,7 +453,6 @@ export default function App() {
       </main>
 
       <WhatsAppButton showAnim={showWA} />
-
       <footer className="footer" style={{paddingBottom:60}}>{L.footer}</footer>
     </>
   );
@@ -378,11 +463,15 @@ const CSS = `
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transition:font-family .2s}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes waBounce{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
 @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 12px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 @keyframes splashFade{0%{opacity:0;transform:scale(.8) translateY(20px)}100%{opacity:1;transform:scale(1) translateY(0)}}
 @keyframes splashBar{0%{width:0%}100%{width:100%}}
 @keyframes splashPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:.85}}
+@keyframes welcomeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes welcomeGlow{0%,100%{box-shadow:0 8px 30px rgba(99,102,241,0.3)}50%{box-shadow:0 8px 40px rgba(99,102,241,0.5)}}
+@keyframes welcomeShimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
 .splash{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
 .splash-logo{animation:splashFade .8s ease both,splashPulse 1.5s ease-in-out 1}
 .splash-img{width:180px;height:auto;max-height:80px;filter:drop-shadow(0 8px 30px rgba(99,102,241,0.3));object-fit:contain}
@@ -390,6 +479,22 @@ body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transit
 .splash-sub{font-size:.72rem;color:rgba(255,255,255,.5);animation:splashFade .8s ease .4s both}
 .splash-loader{width:100px;height:3px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-top:10px;animation:splashFade .8s ease .5s both}
 .splash-bar{height:100%;background:linear-gradient(90deg,#6366f1,#3b82f6,#6366f1);border-radius:4px;animation:splashBar 1.8s ease .6s both}
+
+.welcome-page{min-height:100vh;background:linear-gradient(135deg,#0f3460 0%,#1a1a2e 40%,#16213e 100%);display:flex;align-items:center;justify-content:center;padding:24px 16px;position:relative;overflow:hidden}
+.welcome-bg-shape{position:absolute;border-radius:50%}
+.welcome-shape1{width:300px;height:300px;top:-80px;right:-80px;background:radial-gradient(circle,rgba(99,102,241,0.2) 0%,transparent 70%)}
+.welcome-shape2{width:250px;height:250px;bottom:-60px;left:-60px;background:radial-gradient(circle,rgba(236,72,153,0.15) 0%,transparent 70%)}
+.welcome-content{position:relative;z-index:1;text-align:center;max-width:380px;animation:fadeUp .6s ease both}
+.welcome-logo{width:110px;object-fit:contain;margin-bottom:20px;animation:welcomeFloat 3s ease-in-out infinite;filter:drop-shadow(0 8px 30px rgba(255,255,255,0.2))}
+.welcome-greeting{font-size:1.1rem;color:rgba(255,255,255,0.6);margin-bottom:4px}
+.welcome-on{font-size:.82rem;color:rgba(255,255,255,0.5);margin-bottom:6px}
+.welcome-brand{font-size:1.6rem;font-weight:800;color:white;display:block;margin-top:4px;letter-spacing:-0.02em;background:linear-gradient(90deg,#a5b4fc,#c4b5fd,#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.welcome-desc{font-size:.75rem;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:12px}
+.welcome-company{font-size:.68rem;font-weight:700;color:#facc15;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;padding:6px 16px;background:rgba(250,204,21,0.1);border:1px solid rgba(250,204,21,0.2);border-radius:50px;display:inline-block}
+.welcome-sub{font-size:.7rem;color:rgba(255,255,255,0.4);line-height:1.5;margin-bottom:28px}
+.welcome-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;border:none;border-radius:14px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white;font-size:.9rem;font-weight:700;cursor:pointer;animation:welcomeGlow 2s ease-in-out infinite;transition:transform .2s}
+.welcome-btn:active{transform:scale(0.97)}
+
 .wa-anim{animation:waBounce 1s ease 3,waPulse 1.5s ease 3}
 .lang-toggle{position:fixed;top:8px;z-index:100;display:flex;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:50px;overflow:hidden;backdrop-filter:blur(12px);right:8px}
 .lang-toggle button{padding:4px 10px;border:none;background:transparent;color:rgba(255,255,255,0.6);font-size:.65rem;font-weight:600;cursor:pointer;transition:all .2s}
@@ -411,30 +516,25 @@ body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transit
 .app-card:hover{box-shadow:0 6px 24px -4px rgba(0,0,0,0.1);transform:translateY(-2px)}
 .app-card-inner{padding:12px 8px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
 .app-icon-box{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px -2px rgba(0,0,0,0.2)}
-.app-icon-box svg{width:20px;height:20px}
 .app-name{font-size:.72rem;font-weight:700;color:#111827;line-height:1.2}
 .footer{text-align:center;padding:14px 12px;color:#b0b8c4;font-size:.65rem;border-top:1px solid #f0f1f5}
-@media(min-width:640px){
-  .hero{padding:56px 24px 36px}
-  .hero h1{font-size:2.2rem}
-  .hero p{font-size:.92rem}
-  .hero-stats{gap:44px}
-  .hero-stat-num{font-size:1.6rem}
-  .container{padding:28px 24px 80px}
-  .apps-list{grid-template-columns:repeat(3,1fr);gap:16px}
-  .app-card-inner{padding:20px 16px}
-  .app-icon-box{width:56px;height:56px}
-  .app-icon-box svg{width:28px;height:28px}
-  .app-name{font-size:.92rem}
-}
-@media(min-width:900px){
-  .apps-list{grid-template-columns:repeat(4,1fr);gap:20px}
-}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+
+.detail-back-btn,.cred-back-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:10;padding:7px 14px;color:white;font-size:.78rem;font-weight:600;cursor:pointer;display:inline-flex;alignItems:center;gap:6px;transform:scaleX(-1)}
+.detail-back-btn svg,.cred-back-btn svg{transform:scaleX(-1)}
+
+.cred-page .cred-row{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #f3f4f6}
+.cred-page .cred-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.cred-page .cred-label{display:flex;alignItems:center;gap:6px;font-size:.72rem;font-weight:600;color:#6b7280;margin-bottom:8px}
+.cred-page .cred-label svg{width:16px;height:16px}
+.cred-page .cred-value-box{display:flex;alignItems:center;gap:8px;background:#f9fafb;border-radius:10;padding:10px 12px;border:1px solid #e5e7eb}
+.cred-page .cred-value{flex:1;font-size:.9rem;font-weight:700;color:#111827;word-break:break-all}
+.cred-eye-btn{background:none;border:none;padding:4px;cursor:pointer;display:flex;alignItems:center;justify-content:center}
+.cred-eye-btn svg{width:18px;height:18px}
+
 .pricing-page{min-height:100vh;background:#f5f6fa;padding:16px 14px 40px;display:flex;flex-direction:column;align-items:center}
-.pricing-back{display:inline-flex;align-items:center;gap:4px;background:none;border:none;color:#6366f1;font-size:.75rem;font-weight:600;cursor:pointer;padding:8px 0;margin-bottom:4px;align-self:flex-start}
-.pricing-header{text-align:center;padding:24px 0 20px}
+.pricing-back{display:inline-flex;align-items:center;gap:4px;background:none;border:none;color:#6366f1;font-size:.75rem;font-weight:600;cursor:pointer;padding:8px 0;margin-bottom:4px;align-self:flex-start;transform:scaleX(-1)}
+.pricing-back svg{transform:scaleX(-1)}
+.pricing-header{text-align:center;padding:12px 0 20px}
 .pricing-header h1{font-size:1.4rem;font-weight:800;color:#111827;margin-bottom:4px}
 .pricing-header p{font-size:.75rem;color:#6b7280}
 .pricing-cards{display:flex;flex-direction:column;gap:12px;width:100%;max-width:400px;margin-bottom:16px;animation:fadeUp .5s ease both}
@@ -454,14 +554,33 @@ body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transit
 .pricing-try{background:none;border:2px solid #d1d5db;color:#6b7280;font-size:.75rem;font-weight:600;padding:12px 24px;border-radius:12px;cursor:pointer;transition:all .2s;width:100%;max-width:400px;animation:fadeUp .5s ease .2s both}
 .pricing-try:hover{border-color:#6366f1;color:#6366f1}
 .pricing-pay-card{background:white;border-radius:16px;padding:20px 16px;width:100%;max-width:400px;animation:fadeUp .4s ease both}
-.pricing-btn-wa{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#25d366,#128c7e);color:white;font-size:.8rem;font-weight:700;padding:14px;border-radius:12px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px -2px rgba(37,211,102,0.3)}
+.pricing-bankily-box{display:flex;alignItems:center;gap:10px;background:#f0fdf4;border-radius:12px;padding:12px 14px;margin-bottom:16px}
+.pricing-number{font-size:1rem;font-weight:800;color:#111827;letter-spacing:1}
+.pricing-btn-wa{width:100%;display:flex;alignItems:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#25d366,#128c7e);color:white;font-size:.8rem;font-weight:700;padding:14px;border-radius:12px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px -2px rgba(37,211,102,0.3)}
 .pricing-btn-wa:hover{box-shadow:0 6px 24px -2px rgba(37,211,102,0.4);transform:translateY(-1px)}
+
 @media(min-width:640px){
+  .welcome-logo{width:140px}
+  .welcome-brand{font-size:2rem}
+  .welcome-btn{padding:16px 44px;font-size:1rem}
+  .hero{padding:56px 24px 36px}
+  .hero h1{font-size:2.2rem}
+  .hero p{font-size:.92rem}
+  .hero-stats{gap:44px}
+  .hero-stat-num{font-size:1.6rem}
+  .container{padding:28px 24px 80px}
+  .apps-list{grid-template-columns:repeat(3,1fr);gap:16px}
+  .app-card-inner{padding:20px 16px}
+  .app-icon-box{width:56px;height:56px}
+  .app-name{font-size:.92rem}
   .pricing-page{padding:32px 24px 60px}
   .pricing-header h1{font-size:1.8rem}
   .pricing-cards{flex-direction:row;max-width:600px}
   .pricing-card{padding:28px 24px}
   .pricing-try,.pricing-pay-card{max-width:600px}
   .pricing-price{font-size:2rem}
+}
+@media(min-width:900px){
+  .apps-list{grid-template-columns:repeat(4,1fr);gap:20px}
 }
 `;
