@@ -255,7 +255,7 @@ body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transit
 @keyframes splashPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:.85}}
 .splash{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
 .splash-logo{animation:splashFade .8s ease both,splashPulse 1.5s ease-in-out 1}
-.splash-img{width:180px;height:auto;filter:drop-shadow(0 8px 30px rgba(99,102,241,0.3));object-fit:contain}
+.splash-img{width:220px;height:auto;max-height:100px;filter:drop-shadow(0 8px 30px rgba(99,102,241,0.3));object-fit:contain}
 .splash-title{font-family:'Comfortaa',sans-serif;font-size:2.2rem;font-weight:800;color:white;letter-spacing:-.02em;animation:splashFade .8s ease .2s both}
 .splash-sub{font-size:.82rem;color:rgba(255,255,255,.5);animation:splashFade .8s ease .4s both}
 .splash-loader{width:120px;height:3px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-top:12px;animation:splashFade .8s ease .5s both}
