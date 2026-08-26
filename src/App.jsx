@@ -521,18 +521,18 @@ body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transit
 .app-name{font-size:.72rem;font-weight:700;color:#111827;line-height:1.2}
 .footer{text-align:center;padding:14px 12px;color:#b0b8c4;font-size:.65rem;border-top:1px solid #f0f1f5}
 
-.detail-back-btn,.cred-back-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:10;padding:7px 14px;color:white;font-size:.78rem;font-weight:600;cursor:pointer;display:inline-flex;alignItems:center;gap:6px}
+.detail-back-btn,.cred-back-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:10;padding:7px 14px;color:white;font-size:.78rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .detail-back-btn svg,.cred-back-btn svg{width:18px;height:18px}
-.detail-creds-btn{background:rgba(255,255,255,0.9);border:1.5px solid;padding:5px 12px;border-radius:8;font-size:.68rem;font-weight:600;cursor:pointer;display:inline-flex;alignItems:center;gap:5px;color:#374151;backdrop-filter:blur(8px)}
+.detail-creds-btn{background:rgba(255,255,255,0.9);border:1.5px solid;padding:5px 12px;border-radius:8;font-size:.68rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px;color:#374151;backdrop-filter:blur(8px)}
 .detail-creds-btn svg{width:14px;height:14px}
 
 .cred-page .cred-row{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #f3f4f6}
 .cred-page .cred-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.cred-page .cred-label{display:flex;alignItems:center;gap:6px;font-size:.72rem;font-weight:600;color:#6b7280;margin-bottom:8px}
+.cred-page .cred-label{display:flex;align-items:center;gap:6px;font-size:.72rem;font-weight:600;color:#6b7280;margin-bottom:8px}
 .cred-page .cred-label svg{width:16px;height:16px}
-.cred-page .cred-value-box{display:flex;alignItems:center;gap:8px;background:#f9fafb;border-radius:10;padding:10px 12px;border:1px solid #e5e7eb}
+.cred-page .cred-value-box{display:flex;align-items:center;gap:8px;background:#f9fafb;border-radius:10;padding:10px 12px;border:1px solid #e5e7eb}
 .cred-page .cred-value{flex:1;font-size:.9rem;font-weight:700;color:#111827;word-break:break-all}
-.cred-eye-btn{background:none;border:none;padding:4px;cursor:pointer;display:flex;alignItems:center;justify-content:center}
+.cred-eye-btn{background:none;border:none;padding:4px;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .cred-eye-btn svg{width:18px;height:18px}
 
 .pricing-page{min-height:100vh;background:#f5f6fa;padding:16px 14px 40px;display:flex;flex-direction:column;align-items:center}
@@ -558,9 +558,9 @@ body{background:#f5f6fa;color:#1a1a2e;-webkit-font-smoothing:antialiased;transit
 .pricing-try{background:none;border:2px solid #d1d5db;color:#6b7280;font-size:.75rem;font-weight:600;padding:12px 24px;border-radius:12px;cursor:pointer;transition:all .2s;width:100%;max-width:400px;animation:fadeUp .5s ease .2s both}
 .pricing-try:hover{border-color:#6366f1;color:#6366f1}
 .pricing-pay-card{background:white;border-radius:16px;padding:20px 16px;width:100%;max-width:400px;animation:fadeUp .4s ease both}
-.pricing-bankily-box{display:flex;alignItems:center;gap:10px;background:#f0fdf4;border-radius:12px;padding:12px 14px;margin-bottom:16px}
+.pricing-bankily-box{display:flex;align-items:center;gap:10px;background:#f0fdf4;border-radius:12px;padding:12px 14px;margin-bottom:16px}
 .pricing-number{font-size:1rem;font-weight:800;color:#111827;letter-spacing:1}
-.pricing-btn-wa{width:100%;display:flex;alignItems:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#25d366,#128c7e);color:white;font-size:.8rem;font-weight:700;padding:14px;border-radius:12px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px -2px rgba(37,211,102,0.3)}
+.pricing-btn-wa{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#25d366,#128c7e);color:white;font-size:.8rem;font-weight:700;padding:14px;border-radius:12px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px -2px rgba(37,211,102,0.3)}
 .pricing-btn-wa:hover{box-shadow:0 6px 24px -2px rgba(37,211,102,0.4);transform:translateY(-1px)}
 
 @media(min-width:640px){
